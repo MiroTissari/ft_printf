@@ -11,17 +11,30 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "ft_printf.h"
 
 int	main(void)
 {
-	int	i;
+	long int	i;
+	//char	*str;
+	//char	c;
 
-	i = 100;
-	printf("this is a test\n");
-	printf("%%i = %i'\n", i);
-	printf("%%d = %+d'\n", i);
-	printf("%.3d\n", 1);
-	printf("'%-8.5f'\n", 1.234);
+	//c = 'X';
+	//str = "let's go";
+	i = 38776;
+	//printf("this is a test for normal\n");
+	//printf("the number of characters: %n for normal\n", &i);
+	//printf("%d\n", i);
+	printf("trying hex conversion in normal: %#lx\n", i);
+	//printf("write normal: '%s' and '%%' and then character: '%c'\n", str, c);
+	//small_printf("this is a test for normal\n");
+	//small_printf("test");
+	//small_printf("write this: '%s' and '%%' and then character: '%c'\n", str, c);
+	
+	//printf("%%i = %i'\n", i);
+	//printf("%%d = %+d'\n", i);
+	//printf("%.3d\n", 1);
+	//printf("'%-8.5f'\n", 1.234);
 	//ft_printf("check 1: %s\n check", "hello");
 	//ft_printf("%i", fd);
 //	printf("%1100.5s'\n", "moikkamoi");
@@ -30,5 +43,5 @@ int	main(void)
 //	ft_printf("%X %i\n", 255, -12345);
 //	ft_printf("%d and %s\n", 345, "check");
 //	ft_printf("%++++++0000lllhlhlhlhlhlhlhlhd", 22525526262);
-//	ft_printf("\ncheck\n");
+//	ft_printf("\ncheck\n");	
 }

@@ -14,7 +14,9 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include "libft/libft.h"
+# include <unistd.h>
+# include <stdlib.h>
+//# include "libft.h"
 
 typedef struct s_stuff
 {
@@ -29,7 +31,9 @@ typedef struct s_stuff
 	int			space;
 }				t_stuff;
 
-int		ft_printf(const char *str, ...);
+//int		ft_printf(const char *str, ...);
 void	set_values(t_stuff *data);
+void	format_identifier(const char *str, va_list *argp, t_stuff *data);
+int		small_printf(const char *str, ...);
 
 #endif
