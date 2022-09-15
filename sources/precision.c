@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   precision.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/15 16:48:35 by mtissari          #+#    #+#             */
+/*   Updated: 2022/09/15 17:17:16 by mtissari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*di_precision(t_stuff *data, char *str, int len, long long int num)
+char	*di_precision(t_flags *data, char *str, int len, long long int num)
 {
 	int		i;
 	int		j;
@@ -24,7 +35,7 @@ char	*di_precision(t_stuff *data, char *str, int len, long long int num)
 	return (new);
 }
 
-char	*oux_precision(t_stuff *data, char *str, int len)
+char	*oux_precision(t_flags *data, char *str, int len)
 {
 	int		i;
 	int		j;
@@ -52,7 +63,7 @@ char	*oux_precision(t_stuff *data, char *str, int len)
 }
 
 /*
-char	*double_precision(t_stuff *data, char *str, int len)
+char	*double_precision(t_flags *data, char *str, int len)
 {
 	char	*new;
 
@@ -69,7 +80,7 @@ char	*double_precision(t_stuff *data, char *str, int len)
 	}
 }
 */
-char	*string_precision(t_stuff *data, char *str, int len)
+char	*string_precision(t_flags *data, char *str, int len)
 {
 	char	*new;
 
@@ -91,8 +102,8 @@ char	*string_precision(t_stuff *data, char *str, int len)
 
 /*
 precision gives the minimum number of digits to appear for the d, i,
-o, u, x, and X conversions, the number of digits to appear after the decimal-point
-character for a, A, e, E, f, and F conversions, the maximum number of significant
-digits for the g and G conversions,
+o, u, x, and X conversions, the number of digits to appear after
+the decimal-point character for a, A, e, E, f, and F conversions,
+the maximum number of significant digits for the g and G conversions,
 or the maximum number of bytes to be written for s conversions.
 */

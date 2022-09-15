@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   number_modifiers.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/15 16:48:25 by mtissari          #+#    #+#             */
+/*   Updated: 2022/09/15 17:37:15 by mtissari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 /*
-char	*modifier_hh(t_stuff *data, va_list argp)
+char	*modifier_hh(t_flags *data, va_list argp)
 {
 	if (data->h == 1 && (data->format == 'd' || data->format == 'i'))
 		return (ft_itoa_base((signed char)va_arg(argp, int), DEC, data));
@@ -26,7 +37,7 @@ char	*modifier_hh(t_stuff *data, va_list argp)
 	return (0);
 }
 
-char	*modifier_ll(t_stuff *data, va_list argp)
+char	*modifier_ll(t_flags *data, va_list argp)
 {
 	if (data->l == 1 && (data->format == 'd' || data->format == 'i'))
 		return (ft_itoa_base((long int)va_arg(argp, long int), DEC, data));
@@ -51,7 +62,7 @@ char	*modifier_ll(t_stuff *data, va_list argp)
 	return (0);
 }
 
-char	*modifier_check(t_stuff *data, va_list argp, char format)
+char	*modifier_check(t_flags *data, va_list argp, char format)
 {
 	char	*new;
 
@@ -72,7 +83,7 @@ char	*modifier_check(t_stuff *data, va_list argp, char format)
 	return (new);
 }
 
-void	handle_numbers(t_stuff *data, va_list argp, char format)
+void	handle_numbers(t_flags *data, va_list argp, char format)
 {
 	char	*string;
 
@@ -90,23 +101,23 @@ void	handle_numbers(t_stuff *data, va_list argp, char format)
 }
 */
 
-void	modify_float(t_stuff *data, va_list argp)
+void	modify_float(t_flags *data, va_list argp)
 {
 	long double	num;
 
 	if (data->l == 1)
 		num = (double)va_arg(argp, double);
-	else if (data->L == 1)
+	else if (data->cap_l == 1)
 		num = va_arg(argp, long double);
 	else
-		num = (float)va_arg(argp, float);
+		num = (float)va_arg(argp, double);
 //	num = (long double)num;
 	if (data->period == 0)
 		data->precision = 6;
 	handle_float(data, num);
 }
 
-void	modify_di(t_stuff *data, va_list argp)
+void	modify_di(t_flags *data, va_list argp)
 {
 	long long int	num;
 
@@ -123,7 +134,7 @@ void	modify_di(t_stuff *data, va_list argp)
 	handle_int(data, ft_itoa_base(num, DEC), num);
 }
 
-void	modify_oux(t_stuff *data, va_list argp, char format)
+void	modify_oux(t_flags *data, va_list argp, char format)
 {
 	unsigned long long int	num;
 
@@ -144,5 +155,5 @@ void	modify_oux(t_stuff *data, va_list argp, char format)
 	if (format == 'X')
 		handle_hex(data, uitoa_base(num, HEX), num);
 	if (format == 'x')
-		handle_hex(data, uitoa_base(num, HeX), num);
+		handle_hex(data, uitoa_base(num, HX), num);
 }

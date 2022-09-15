@@ -1,12 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   char_and_string.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/15 16:47:48 by mtissari          #+#    #+#             */
+/*   Updated: 2022/09/15 17:16:42 by mtissari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_char(t_stuff *data, int chr)
+void	print_char(t_flags *data, int chr)
 {
 	data->ret_val += write(1, &chr, 1);
 }
 
-void	print_str(t_stuff *data, char *str)
+void	print_str(t_flags *data, char *str)
 {
 	int	i;
 
@@ -15,7 +26,7 @@ void	print_str(t_stuff *data, char *str)
 		data->ret_val += write(1, &str[i++], 1);
 }
 
-void	handle_char(t_stuff *data, int chr)
+void	handle_char(t_flags *data, int chr)
 {
 	char	*temp;
 	char	*str;
@@ -31,12 +42,12 @@ void	handle_char(t_stuff *data, int chr)
 		str = ft_strdup(temp);
 	free(temp);
 	i = 0;
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 		data->ret_val += write(1, &str[i++], 1);
 	free (str);
 }
 
-char	*deal_null(char *str, t_stuff *data)
+char	*deal_null(char *str, t_flags *data)
 {
 	char	*new;
 
@@ -55,7 +66,7 @@ char	*deal_null(char *str, t_stuff *data)
 	return (new);
 }
 
-void	handle_string(t_stuff *data, char *str)
+void	handle_string(t_flags *data, char *str)
 {
 	char	*temp;
 	char	*save;

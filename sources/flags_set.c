@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flags_set.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/15 16:47:58 by mtissari          #+#    #+#             */
+/*   Updated: 2022/09/15 17:18:06 by mtissari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	set_modifiers(char *str, int i, t_stuff *data)
+int	set_modifiers(char *str, int i, t_flags *data)
 {
 	if (str[i] == 'l' && data->l == 0 && data->ll == 0)
 	{
@@ -21,12 +32,12 @@ int	set_modifiers(char *str, int i, t_stuff *data)
 		}
 		data->h = 1;
 	}
-	else if (str[i] == 'L' && data->L == 0)
-		data->L = 1;
+	else if (str[i] == 'L' && data->cap_l == 0)
+		data->cap_l = 1;
 	return (0);
 }
 
-int	set_width_and_precision(char *str, int i, t_stuff *data)
+int	set_width_and_precision(char *str, int i, t_flags *data)
 {
 	int		len;
 	char	temp[11];
@@ -54,7 +65,7 @@ int	set_width_and_precision(char *str, int i, t_stuff *data)
 	return (i);
 }
 
-void	set_flags(char flag, t_stuff *data)
+void	set_flags(char flag, t_flags *data)
 {
 	if (flag == ' ' && data->plus == 0)
 		data->space = 1;

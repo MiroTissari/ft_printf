@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_ints.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/15 16:48:22 by mtissari          #+#    #+#             */
+/*   Updated: 2022/09/15 17:17:35 by mtissari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	handle_uint(t_stuff *data, char *str, unsigned long long int num)
+void	handle_uint(t_flags *data, char *str, unsigned long long int num)
 {
 	int		len;
 	int		i;
@@ -26,7 +37,7 @@ void	handle_uint(t_stuff *data, char *str, unsigned long long int num)
 }
 
 /*
-char	*int_flags(t_stuff *data, char *str)
+char	*int_flags(t_flags *data, char *str)
 {
 	if (data->period == 1)
 	{
@@ -38,7 +49,7 @@ char	*int_flags(t_stuff *data, char *str)
 	}
 }
 */
-void	handle_int(t_stuff *data, char *str, long long int num)
+void	handle_int(t_flags *data, char *str, long long int num)
 {
 	int		len;
 	int		i;

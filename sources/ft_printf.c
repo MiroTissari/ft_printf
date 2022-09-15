@@ -6,13 +6,16 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 13:55:14 by mtissari          #+#    #+#             */
-/*   Updated: 2022/06/29 20:19:02 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/15 17:37:21 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	set_values(t_stuff *data)
+/*sources/ft_printf.c:17:12: error: array type 'char [17]' is not assignable
+		data->hex = "0123456789abcdef";*/
+
+void	set_values(t_flags *data)
 {
 	data->flag_nb = 0;
 	data->hash = 0;
@@ -26,13 +29,13 @@ void	set_values(t_stuff *data)
 	data->ll = 0;
 	data->h = 0;
 	data->hh = 0;
-	data->L = 0;
+	data->cap_l = 0;
 	data->width = 0;
 	data->precision = 0;
 	data->format = 0;
 }
 
-int	check_flags(char *str, t_stuff *data, int i)
+int	check_flags(char *str, t_flags *data, int i)
 {
 	int	nb;
 
@@ -58,7 +61,7 @@ int	check_flags(char *str, t_stuff *data, int i)
 	return (nb);
 }
 
-void	format_identifier(const char *str, va_list argp, t_stuff *data)
+void	format_identifier(const char *str, va_list argp, t_flags *data)
 {
 	int	i;
 
@@ -85,7 +88,7 @@ void	format_identifier(const char *str, va_list argp, t_stuff *data)
 
 int	ft_printf(const char *str, ...)
 {
-	t_stuff	data;
+	t_flags	data;
 	va_list	argp;
 	int		i;
 	char	*save;

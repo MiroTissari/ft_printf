@@ -6,7 +6,7 @@
 #    By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/17 13:28:28 by mtissari          #+#    #+#              #
-#    Updated: 2022/06/29 16:50:20 by mtissari         ###   ########.fr        #
+#    Updated: 2022/09/15 17:40:25 by mtissari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror -c
 FILES := ft_printf.c flags_set.c ft_itoa_base.c char_and_string.c parcer.c \
-		handle_base.c handle_ints.c number_modifiers.c precision.c
+		handle_base.c handle_ints.c handle_float.c number_modifiers.c \
+		precision.c
 O_FILES := $(FILES:.c=.o)
 INCLUDES := -I includes
 LIBFT := libft
@@ -25,6 +26,12 @@ SOURCES := $(addprefix  $(S_PATH), $(FILES))
 all: $(NAME)
 
 $(NAME):
+	@make re -C $(LIBFT)
+	cp libft/libft.a $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDES) $(SOURCES)
+	ar -rcs $(NAME) $(O_FILES)
+
+windows:
 	@make re -C $(LIBFT)
 	cp libft/libft.a $(NAME)
 	$(CC) $(CFLAGS) $(INCLUDES) $(SOURCES) -lft

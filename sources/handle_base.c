@@ -1,12 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_base.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/15 16:48:11 by mtissari          #+#    #+#             */
+/*   Updated: 2022/09/15 17:16:34 by mtissari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	handle_pointer(t_stuff *data, va_list argp)
+void	handle_pointer(t_flags *data, va_list argp)
 {
 	char	*str;
 	char	*save;
 
-	str = ft_itoa_base((unsigned long)va_arg(argp, unsigned long), HeX);
+	str = ft_itoa_base((unsigned long)va_arg(argp, unsigned long), data->hex);
 	save = oux_precision(data, str, ft_strlen(str));
 	free (str);
 	save = ft_strjoin_free("0x", save, 0, 2);
@@ -23,7 +34,7 @@ void	handle_pointer(t_stuff *data, va_list argp)
 	free (str);
 }
 
-void	handle_oct(t_stuff *data, char *str, unsigned long long int num)
+void	handle_oct(t_flags *data, char *str, unsigned long long int num)
 {
 	char	*save;
 
@@ -44,7 +55,7 @@ void	handle_oct(t_stuff *data, char *str, unsigned long long int num)
 	free (str);
 }
 
-char	*hash_hex_edge(t_stuff *data, char *str, unsigned long long int num)
+char	*hash_hex_edge(t_flags *data, char *str, unsigned long long int num)
 {
 	if (data->format == 'x' && num > 0)
 		str = ft_strjoin("0x", str);
@@ -53,7 +64,7 @@ char	*hash_hex_edge(t_stuff *data, char *str, unsigned long long int num)
 	return (str);
 }
 
-char	*hash_hex(t_stuff *data, char *str, unsigned long long int num)
+char	*hash_hex(t_flags *data, char *str, unsigned long long int num)
 {
 	int	i;
 
@@ -82,7 +93,7 @@ char	*hash_hex(t_stuff *data, char *str, unsigned long long int num)
 	return (str);
 }
 
-char	*handle_hex_zero(t_stuff *data)
+char	*handle_hex_zero(t_flags *data)
 {
 	char	*new;
 
@@ -97,7 +108,7 @@ char	*handle_hex_zero(t_stuff *data)
 	return (new);
 }
 
-void	handle_hex(t_stuff *data, char *str, unsigned long long int num)
+void	handle_hex(t_flags *data, char *str, unsigned long long int num)
 {
 	char	*save;
 
