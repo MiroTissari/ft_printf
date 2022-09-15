@@ -88,7 +88,6 @@ int main()
 	ft_printf("MY PRINTF:\nu int: |%050llX|\n", h); //
 	printf("PRINTF:\nu int: |%llX|\n", h);
 	ft_printf("MY PRINTF:\nu int: |%llX|\n", h);
-
 	printf("\nUnsigned Small Hexs\n");
 	printf("PRINTF:\nu int: |%10.x|\n", 0);
 	ft_printf("MY PRINTF:\nu int: |%10.x|\n", 0);
@@ -98,7 +97,7 @@ int main()
 	ft_printf("MY PRINTF:\nu int: |%010.x|\n", 0);
 	printf("PRINTF:\nu int: |%.x|\n", 0);
 	ft_printf("MY PRINTF:\nu int: |%.x|\n", 0);
-	printf("PRINTF:\nu int: |%-10.15x|---\n", 0);
+	printf("PRINTF:\nu int: |%-10.15x|\n", 0);
 	ft_printf("MY PRINTF:\nu int: |%-10.15x|\n", 0);
 	printf("PRINTF:\nu int: |%-10x|\n", 0);
 	ft_printf("MY PRINTF:\nu int: |%-10x|\n", 0);
@@ -109,7 +108,7 @@ int main()
 	printf("PRINTF:\nu int: |%10x|\n", 0);
 	ft_printf("MY PRINTF:\nu int: |%10x|\n", 0);
 	printf("PRINTF:\nu int: |%10.15x|\n", 0);
-	ft_printf("MY PRINTF:\nu int: |%10.15x|---\n", 0);
+	ft_printf("MY PRINTF:\nu int: |%10.15x|\n", 0);
 	printf("PRINTF:\nu int: |%10.x|\n", 0);
 	ft_printf("MY PRINTF:\nu int: |%10.x|\n", 0);
 	printf("PRINTF:\nu int: |%10.1x|\n", 0);
@@ -349,7 +348,6 @@ int main()
 	ft_printf("MY PRINTF:\nu int: |%#050llX|\n", h);
 	printf("PRINTF:\nu int: |%#llX|\n", h);
 	ft_printf("MY PRINTF:\nu int: |%#llX|\n", h); /* only width doesnt work */
-
 	printf("\nUnsigned Small Hexs\n");
 	printf("PRINTF:\nu int: |%#10.x|\n", 0);
 	ft_printf("MY PRINTF:\nu int: |%#10.x|\n", 0);
@@ -383,7 +381,7 @@ int main()
 	ft_printf("MY PRINTF:\nu int: |%#010.20x|\n", 0);
 	printf("PRINTF:\nu int: |%#0x|\n", 0);
 	ft_printf("MY PRINTF:\nu int: |%#0x|\n", 0);
-	printf("PRINTF:\nu int: |%#10llx|\n", h);
+	printf("\n\n\n\nPRINTF:\nu int: |%#10llx|\n", h);
 	ft_printf("MY PRINTF:\nu int: |%#10llx|\n", h);
 	printf("PRINTF:\nu int: |%#010llx|\n", h);
 	ft_printf("MY PRINTF:\nu int: |%#010llx|\n", h);
@@ -603,13 +601,273 @@ int main()
 	printf("PRINTF:\nu int: |%#016llx|\n", h);
 	ft_printf("MY PRINTF:\nu int: |%#016llx|\n", h);
 
-	re = printf("THE_PRINTF:\nu int: |%#020llx|\n", h);
-	my = ft_printf("MY__PRINTF:\nu int: |%#020llx|\n", h);
+	re = printf("PRINTF:\nu int: |%#020llx|\n", h);
+	my = ft_printf("PRINTF:\nu int: |%#020llx|\n", h);
 
-	printf("\n\nprintf: %i", re);
-	printf("\n\nmy: %i\n", my);
+	printf("\n\n\n|%i|\t\t|%i|\n", re, my);
 
-	system ("leaks basic");
+	printf("PRINTF:\nu int: |%#016.30llx|\n", h - 54LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.30llx|\n", h - 54LLU);
+	printf("PRINTF:\nu int: |%#16.30llx|\n", h);
+	ft_printf("MY PRINTF:\nu int: |%#16.30llx|\n", h);
+	printf("PRINTF:\nu int: |%#-016.30llx|\n", h - 54LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.30llx|\n", h - 54LLU);
+	printf("PRINTF:\nu int: |%#-16.30llx|\n", h);
+	ft_printf("MY PRINTF:\nu int: |%#-16.30llx|\n", h);
+	printf("PRINTF:\nu int: |%#-16.30llx|\n", h - 54LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.30llx|\n", h - 54LLU);
+	printf("PRINTF:\nu int: |%#-016.30llx|\n", h);
+	ft_printf("MY PRINTF:\nu int: |%#-016.30llx|\n", h);
+
+	printf("PRINTF:\nu int: |%#016.30llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.30llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#16.30llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#16.30llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.30llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.30llx|\n",12LLU);
+	printf("PRINTF:\nu int: |%#-16.30llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.30llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-16.30llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.30llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.30llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.30llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-16.3llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.3llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.3llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.3llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-16.4llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.4llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.4llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.4llx|\n", 12LLU);
+
+	printf("PRINTF:\nu int: |%#16.2llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#16.2llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#016.2llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.2llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#16.3llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#16.3llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#016.3llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.3llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#16.4llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#16.4llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#016.4llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.4llx|\n", 12LLU);
+
+	printf("PRINTF:\nu int: |%#16.13llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#16.13llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#016.13llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.13llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#16.14llx|------------\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#16.14llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#016.14llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.14llx|------------\n", 12LLU);
+	printf("PRINTF:\nu int: |%#16.15llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#16.15llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#016.15llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.15llx|\n", 12LLU);
+
+	printf("\n\nPRINTF:\nu int: |%#16.16llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#16.16llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#016.16llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.16llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#16.17llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#16.17llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#016.17llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.17llx|\n", 12LLU);
+
+	printf("PRINTF:\nu int: |%#-16.2llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.2llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.2llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.2llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-16.3llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.3llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.3llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.3llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-16.4llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.4llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#0-16.4llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#0-16.4llx|\n", 12LLU);
+
+	printf("PRINTF:\nu int: |%#-16.13llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.13llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.13llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.13llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-16.14llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.14llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.14llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.14llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-16.15llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.15llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.15llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.15llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-16.16llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.16llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.16llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.16llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-16.17llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.17llx|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.17llx|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.17llx|\n", 12LLU);
+
+	printf("\n\n\n\n\n\nPRINTF:\nu int: |%#016.30llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.30llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#16.30llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#16.30llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.30llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.30lo|\n",12LLU);
+	printf("PRINTF:\nu int: |%#-16.30llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.30llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-16.30llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.30llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.30llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.30llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-16.3llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.3llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.3llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.3llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-16.4llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.4llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.4llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.4llo|\n", 12LLU);
+
+	printf("PRINTF:\nu int: |%#16.2llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#16.2llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#016.2llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.2llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#16.3llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#16.3llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#016.3llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.3llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#16.4llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#16.4llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#016.4llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.4llo|\n", 12LLU);
+
+	printf("PRINTF:\nu int: |%#16.13llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#16.13llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#016.13llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.13llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#16.14llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#16.14llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#016.14llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.14llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#16.15llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#16.15llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#016.15llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.15llo|\n", 12LLU);
+
+	printf("\n\nPRINTF:\nu int: |%#16.16llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#16.16llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#016.16llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.16llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#16.17llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#16.17llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#016.17llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#016.17llo|\n", 12LLU);
+
+	printf("PRINTF:\nu int: |%#-16.2llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.2llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.2llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.2llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-16.3llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.3llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.3llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.3llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-16.4llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.4llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#0-16.4llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#0-16.4llo|\n", 12LLU);
+
+	printf("PRINTF:\nu int: |%#-16.13llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.13llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.13llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.13llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-16.14llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.14llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.14llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.14llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-16.15llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.15llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.15llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.15llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-16.16llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.16llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.16llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.16llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-16.17llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-16.17llo|\n", 12LLU);
+	printf("PRINTF:\nu int: |%#-016.17llo|\n", 12LLU);
+	ft_printf("MY PRINTF:\nu int: |%#-016.17llo|\n", 12LLU);
+
+
+	printf("\n\n\n\n\nPRINTF:\nu int: |%#llo|\n", NULL);
+	ft_printf("MY PRINTF:\nu int: |%#llo|\n", NULL);
+	printf("PRINTF:\nu int: |%#x|\n", NULL);
+	ft_printf("MY PRINTF:\nu int: |%#x|\n", NULL);
+	printf("PRINTF:\nu int: |%+i|!!!\n", NULL);
+	ft_printf("MY PRINTF:\nu int: |%+i|!!!\n", NULL);
+	printf("PRINTF:\nu int: |%i|\n", NULL);
+	ft_printf("MY PRINTF:\nu int: |%i|\n", NULL);
+/*	printf("PRINTF:\nu int: |%+f|\n", NULL);
+	ft_printf("MY PRINTF:\nu int: |%+f|\n", NULL);
+	printf("PRINTF:\nu int: |%f|\n", NULL);
+	ft_printf("MY PRINTF:\nu int: |%f|\n", NULL);*/
+	printf("PRINTF:\nu int: |%s|\n", NULL);
+	ft_printf("MY PRINTF:\nu int: |%s|\n", NULL);
+	printf("PRINTF:\nu int: |%+s|\n", NULL);
+	ft_printf("MY PRINTF:\nu int: |%+s|\n", NULL);
+	printf("PRINTF:\nu int: |%+c|\n", NULL);
+	ft_printf("MY PRINTF:\nu int: |%+c|\n", NULL);
+	printf("PRINTF:\nu int: |%c|\n", NULL);
+	ft_printf("MY PRINTF:\nu int: |%c|\n", NULL);
+	printf("PRINTF:\nu int: |%+p|!!!\n", NULL);
+	ft_printf("MY PRINTF:\nu int: |%+p|!!!\n", NULL);
+/*	printf("PRINTF:\nu int: |%|\n", NULL);
+	ft_printf("MY PRINTF:\nu int: |%|\n", NULL);*/
+
+	ft_printf("MY PRINTF:\npointers: |%01d|\n", -1);
+	printf("PRINTF:\npointers: |%01d|\n", -1);
+
+	ft_printf("MY PRINTF:\npointers: |%#.2o|\n", 2);
+	printf("PRINTF:\npointers: |%#.2o|\n", 2);
+
+/*
+	printf("\n\n\n\n------");
+	printf("{%*3d}", 5, 0);
+	printf("\n\n\n\n");
+	ft_printf("{%*3d}", 5, 0);
+	ft_printf("---|%0*.*s|",);
+
+	printf("\n\n\n");
+	printf("{%*d}", -5, 42);
+	printf("\n\n\n");
+	ft_printf("{%*d}", -5, 42);
+	printf("\n\n\n");
+	printf("{%.*s}", 42);
+	printf("\n\n\n");
+	ft_printf("{%.*s}", 42);
+	printf("\n\n\n");*/
+
+
+
+
+	ft_printf("MY PRINTF:\npointers: |%.u|!!!\n", 0);
+	printf("PRINTF:\npointers: |%.u|!!!\n", 0);
+
+
+	ft_printf("MY PRINTF:\npointers: |%20u|\n", 50000);
+	printf("PRINTF:\npointers: |%20u|\n", 50000);
+
+	ft_printf("MY PRINTF:\npointers: |%#x|\n", 1);
+	printf("PRINTF:\npointers: |%#x|\n", 1);
+
+	ft_printf("MY PRINTF:\npointers: |%#.4x|\n", 0);
+	printf("PRINTF:\npointers: |%#.4x|\n", 0);
+
+	ft_printf("MY PRINTF:\npointers: |%#-10x|\n", 0);
+	printf("PRINTF:\npointers: |%#-10x|\n", 0);
+
+	system ("leaks a.out");
 	return 0;
 }
 

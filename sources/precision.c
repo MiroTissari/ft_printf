@@ -46,6 +46,8 @@ char	*oux_precision(t_stuff *data, char *str, int len)
 		new = ft_strjoin_free("0x", new, 0, 2);
 	else if (data->format == 'X' && data->hash == 1 && str[0] != '0' && data->period == 1)
 		new = ft_strjoin_free("0X", new, 0, 2);
+	else if (data->format == 'o' && data->hash == 1 && str[0] != '0' && new[0] != '0')
+		new = ft_strjoin_free("0", new, 0, 2);
 	return (new);
 }
 

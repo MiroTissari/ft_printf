@@ -20,10 +20,10 @@ char	*hex_parcer(t_stuff *data, char *str, int len)
 	}
 	else
 	{
-		len = 0;
 		new = hash_hex(data, new, len);
+		len = 0;
 		if (new[1] == 'x' || new[1] == 'X')
-			len = 3;
+			len = 2;
 		while (str[i] != '\0')
 			new[len++] = str[i++];
 	}

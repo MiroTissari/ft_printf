@@ -62,7 +62,7 @@ int	main(void)
 	printf("the printf '%%i = |%#12.15i|'\n", i);
 	//printf("'%%+d = |%+d|'\n", i);
 	//printf("some text before the |%%12.7d|'%12.7d' yes\n", 90123);
-	//printf("'%015.5f'\n", 9.99999999999);
+	printf("'%015.5f'\n", 9.99999999999);
 	//ft_printf("check 1: %s\n check", "hello");
 	//ft_printf("%i", fd);
 	//printf("'%47.5s'|%n|\n", "moikkamoi", &i);
@@ -70,9 +70,13 @@ int	main(void)
 	//printf("|%05c| \n", 'f');
 	//printf("|%+5%|");		//check how this should behave!!!!!
 	system("leaks ft_printf.c");
-	printf("\n");
+	printf("\n\n\n");
 //	ft_printf("%s\n", output);
-//	printf("%.0lf %Lf\n", 1.5f, 1.5L);
+	printf("f & L \t|%0lf| \t|%Lf|\n", 1.5, 1.5l);
+	printf("f & l \t|%.0lf| \t|%lf|\n", 2.5f, 1.5l);
+	printf("f & l \t|%#.0lf| \t|%f|\n", 2.5f, 1.5);
+	printf("f & L \t|%#.10lf| \t|%Lf|\n", 1.5f, 1.5L);
+	printf("f & L \t|%10.0lf| \t|%Lf|\n", 1.5f, 1.5L);
 //	ft_printf("%X %i\n", 255, -12345);
 //	ft_printf("%d and %s\n", 345, "check");
 //	ft_printf("%++++++0000lllhlhlhlhlhlhlhlhd", 22525526262);

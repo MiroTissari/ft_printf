@@ -89,6 +89,23 @@ void	handle_numbers(t_stuff *data, va_list argp, char format)
 		handle_hex(data, string);
 }
 */
+
+void	modify_float(t_stuff *data, va_list argp)
+{
+	long double	num;
+
+	if (data->l == 1)
+		num = (double)va_arg(argp, double);
+	else if (data->L == 1)
+		num = va_arg(argp, long double);
+	else
+		num = (float)va_arg(argp, float);
+//	num = (long double)num;
+	if (data->period == 0)
+		data->precision = 6;
+	handle_float(data, num);
+}
+
 void	modify_di(t_stuff *data, va_list argp)
 {
 	long long int	num;

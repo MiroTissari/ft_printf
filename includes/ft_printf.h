@@ -77,6 +77,8 @@ void	handle_uint(t_stuff *data, char *str, unsigned long long int num);
 
 void	handle_hex(t_stuff *data, char *str, unsigned long long int num);
 char	*hash_hex(t_stuff *data, char *str, unsigned long long int num);
+char	*hash_hex_edge(t_stuff *data, char *str, unsigned long long int num);
+char	*handle_hex_zero(t_stuff *data);
 void	handle_oct(t_stuff *data, char *str, unsigned long long int num);
 void	handle_pointer(t_stuff *data, va_list argp);
 

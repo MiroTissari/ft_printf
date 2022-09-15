@@ -75,7 +75,7 @@ void	format_identifier(const char *str, va_list argp, t_stuff *data)
 	else if (str[i] == 'o' || str[i] == 'u' || str[i] == 'x' || str[i] == 'X')
 		modify_oux(data, argp, str[i]);
 /*	else if (str[i] == 'f')
-		handle_doubles(data, argp, str[i]);*/
+		modify_float(data, argp);*/
 	else if (str[i] == 'p')
 		handle_pointer(data, argp);
 /*	else
@@ -101,7 +101,6 @@ int	ft_printf(const char *str, ...)
 			set_values(&data);
 			i = check_flags(save, &data, i + 1);
 			format_identifier(&save[i], argp, &data);
-		//	i += data.index_add;
 		}
 		else
 			data.ret_val += write(1, &save[i], 1);
