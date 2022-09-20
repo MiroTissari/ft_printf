@@ -6,38 +6,35 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:47:58 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/15 17:18:06 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/20 15:03:23 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	set_modifiers(char *str, int i, t_flags *data)
+void	set_modifiers(char *str, int i, t_check *data)
 {
-	if (str[i] == 'l' && data->l == 0 && data->ll == 0)
+	if (str[i] == 'l')
 	{
-		if (str[i + 1] == 'l' && data->l == 1)
+		if (str[i + 1] == 'l')
 		{
 			data->ll = 1;
-			return (1);
 		}
 		data->l = 1;
 	}
-	else if (str[i] == 'h' && data->h == 0 && data->hh == 0)
+	if (str[i] == 'h')
 	{
-		if (str[i + 1] == 'h' && data->h == 1)
+		if (str[i + 1] == 'h')
 		{
 			data->hh = 1;
-			return (1);
 		}
 		data->h = 1;
 	}
-	else if (str[i] == 'L' && data->cap_l == 0)
+	if (str[i] == 'L')
 		data->cap_l = 1;
-	return (0);
 }
 
-int	set_width_and_precision(char *str, int i, t_flags *data)
+int	set_width_and_precision(char *str, int i, t_check *data)
 {
 	int		len;
 	char	temp[11];
@@ -52,6 +49,9 @@ int	set_width_and_precision(char *str, int i, t_flags *data)
 		len = 0;
 		while (str[i] >= 48 && str[i] <= 57)
 			temp[len++] = str[i++];
+		if (str[i] != '.')
+			i--;
+		temp[len] = '\0';
 		data->width = ft_atoi(temp);
 	}
 	else if (data->precision == 0 && data->period == 1)
@@ -59,13 +59,14 @@ int	set_width_and_precision(char *str, int i, t_flags *data)
 		len = 0;
 		while (str[i] >= 48 && str[i] <= 57)
 			temp[len++] = str[i++];
+		i--;
 		temp[len] = '\0';
 		data->precision = ft_atoi(temp);
 	}
 	return (i);
 }
 
-void	set_flags(char flag, t_flags *data)
+void	set_check(char flag, t_check *data)
 {
 	if (flag == ' ' && data->plus == 0)
 		data->space = 1;

@@ -6,18 +6,18 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:47:48 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/15 17:16:42 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/20 13:34:09 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_char(t_flags *data, int chr)
+void	print_char(t_check *data, int chr)
 {
 	data->ret_val += write(1, &chr, 1);
 }
 
-void	print_str(t_flags *data, char *str)
+void	print_str(t_check *data, char *str)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ void	print_str(t_flags *data, char *str)
 		data->ret_val += write(1, &str[i++], 1);
 }
 
-void	handle_char(t_flags *data, int chr)
+void	handle_char(t_check *data, int chr)
 {
 	char	*temp;
 	char	*str;
@@ -47,7 +47,7 @@ void	handle_char(t_flags *data, int chr)
 	free (str);
 }
 
-char	*deal_null(char *str, t_flags *data)
+char	*deal_null(char *str, t_check *data)
 {
 	char	*new;
 
@@ -66,7 +66,7 @@ char	*deal_null(char *str, t_flags *data)
 	return (new);
 }
 
-void	handle_string(t_flags *data, char *str)
+void	handle_string(t_check *data, char *str)
 {
 	char	*temp;
 	char	*save;

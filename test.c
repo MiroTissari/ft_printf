@@ -54,7 +54,7 @@ int	main(void)
 	//printf("write normal: '%s' and '%%' and then character: '%c'\n", str, c);
 	ft_printf("\nthis is a test for my printf\n\n");
 	ft_printf("my printff: '%%' and then string: '%015s'\n", str);
-	printf("the printf: '%%' and then string: '%015s'\n\n", str);
+	printf("the printf: '%%' and then string: '%015s'\n", str);
 	ft_printf("my printff: '%%' and then string: '% -15.24s'\n", str);
 	printf("the printf: '%%' and then string: '% -15.24s'\n\n", str);
 	
@@ -82,10 +82,13 @@ int	main(void)
 	ft_printf("my_printf: \t|%#.10lf| \t|%Lf|\n", 1.5555555f, 1.5L);
 	printf("theprintf: \t|%10.0lf| \t|%Lf|\n", -1.5f, 1.5L);
 	ft_printf("my_printf: \t|%10.0lf| \t|%Lf|\n", -1.5f, 1.5L);
-	printf("theprintf: \t|%10lf| \t|%.3Lf|\n", 1.999999999999999, 0.0L);
-	ft_printf("my_printf: \t|%10lf| \t|%.3Lf|\n", 1.99999999999999, 0.0L);
-	ft_printf("my_printf: \t|%10.0f| \t|% +.3Lf|\t|%.4f|\n", 4.5, 0.0L, 0.0/0);
-	printf("theprintf: \t|%10.0f| \t|% +.3Lf|\t|%.4f|\n", 4.5, 0.0L, 0.0/0);
+	printf("theprintf: \t|%#10.30lf| \t|%.3Lf|\n", 1.999999999999999, 0.0L);
+	ft_printf("my_printf: \t|%#10.30lf| \t|%.3Lf|\n", 1.99999999999999, 0.0L);
+	ft_printf("my_printf: \t|%+.3Lf||%+.3Lf||%+.3Lf||\n", 1.5L, 0.0L, 0.0L);
+	printf("theprintf: \t|%+.3Lf||%+.3Lf||%+.3Lf||\n", 1.5L, 0.0L, 0.0L);
+
+	ft_printf("my_printf: \t|%10.0f| \t|%+.3Lf|\t|%.4f|\n", 4.5, 0.0L, 0.0/0);
+	printf("theprintf: \t|%10.0f| \t|%+.3Lf|\t|%.4f|\n", 4.5, 0.0L, 0.0/0);
 	
 	printf("theprintf: \t|%10.0Llf|\n", 1.5);
 	ft_printf("my_printf: \t|%10.0Llf|\n\n", 1.5);

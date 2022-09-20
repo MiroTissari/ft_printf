@@ -6,13 +6,13 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:48:35 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/15 17:17:16 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/20 13:35:08 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*di_precision(t_flags *data, char *str, int len, long long int num)
+char	*di_precision(t_check *data, char *str, int len, long long int num)
 {
 	int		i;
 	int		j;
@@ -35,7 +35,7 @@ char	*di_precision(t_flags *data, char *str, int len, long long int num)
 	return (new);
 }
 
-char	*oux_precision(t_flags *data, char *str, int len)
+char	*oux_precision(t_check *data, char *str, int len)
 {
 	int		i;
 	int		j;
@@ -63,7 +63,7 @@ char	*oux_precision(t_flags *data, char *str, int len)
 }
 
 /*
-char	*double_precision(t_flags *data, char *str, int len)
+char	*double_precision(t_check *data, char *str, int len)
 {
 	char	*new;
 
@@ -80,7 +80,7 @@ char	*double_precision(t_flags *data, char *str, int len)
 	}
 }
 */
-char	*string_precision(t_flags *data, char *str, int len)
+char	*string_precision(t_check *data, char *str, int len)
 {
 	char	*new;
 

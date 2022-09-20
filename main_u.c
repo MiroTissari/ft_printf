@@ -308,10 +308,10 @@ int main()
 	ft_printf("MY PRINTF:\nu int: |%#-10.llX|\n", h);
 	printf("PRINTF:\nu int: |%#-10.1llX|\n", h);
 	ft_printf("MY PRINTF:\nu int: |%#-10.1llX|\n", h);
-	printf("PRINTF:\nu int: |%#10.1llX|\n", h);
-	ft_printf("MY PRINTF:\nu int: |%#10.1llX|\n", h);
-	printf("PRINTF:\nu int: |%#-10.30llX|\n", h);
-	ft_printf("MY PRINTF:\nu int: |%#-10.30llX|\n", h);
+	printf("PRINTF:\nu int: |%#20.60llX|\n", h);
+	ft_printf("MY PRINTF:\nu int: |%#20.60llX|===\n", h);
+	printf("PRINTF:\nu int: |%#-10.30X|\n", h);
+	ft_printf("MY PRINTF:\nu int: |%#-10.30X|\n", h);
 	printf("PRINTF:\nu int: |%#10.30llX|\n", h);
 	ft_printf("MY PRINTF:\nu int: |%#10.30llX|\n", h);
 	printf("PRINTF:\nu int: |%#-5llX|\n", h);

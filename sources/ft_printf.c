@@ -6,7 +6,7 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 13:55:14 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/15 17:37:21 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/20 14:48:28 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*sources/ft_printf.c:17:12: error: array type 'char [17]' is not assignable
 		data->hex = "0123456789abcdef";*/
 
-void	set_values(t_flags *data)
+void	set_values(t_check *data)
 {
 	data->flag_nb = 0;
 	data->hash = 0;
@@ -36,7 +36,7 @@ void	set_values(t_flags *data)
 	data->negative = 0;
 }
 
-int	check_flags(char *str, t_flags *data, int i)
+int	check_flags(char *str, t_check *data, int i)
 {
 	int	nb;
 
@@ -44,7 +44,7 @@ int	check_flags(char *str, t_flags *data, int i)
 	while (str[i] == ' ' || str[i] == '0' || str[i] == '#' || str[i] == '-'
 		|| str[i] == '+')
 	{
-		set_flags(str[i], data);
+		set_check(str[i], data);
 		i++;
 	}
 	while ((str[i] >= 48 && str[i] <= 57) || str[i] == '.')
@@ -54,15 +54,16 @@ int	check_flags(char *str, t_flags *data, int i)
 			data->period = 1;
 		i++;
 	}
+	//printf("\nwidth: %i\t\t precision: %i\n", data->width, data->precision);
 	while (str[i] == 'l' || str[i] == 'h' || str[i] == 'L')
 	{
-		i += set_modifiers(str, i, data);
+		set_modifiers(str, i, data);
 		i++;
 	}
-	return (nb);
+	return (i);
 }
 
-void	format_identifier(const char *str, va_list *argp, t_flags *data)
+void	format_identifier(const char *str, va_list *argp, t_check *data)
 {
 	int	i;
 
@@ -89,7 +90,7 @@ void	format_identifier(const char *str, va_list *argp, t_flags *data)
 
 int	ft_printf(const char *str, ...)
 {
-	t_flags	data;
+	t_check	data;
 	va_list	argp;
 	int		i;
 	char	*save;

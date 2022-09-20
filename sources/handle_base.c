@@ -6,13 +6,13 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:48:11 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/15 17:16:34 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/20 14:57:47 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	handle_pointer(t_flags *data, va_list *argp)
+void	handle_pointer(t_check *data, va_list *argp)
 {
 	char	*str;
 	char	*save;
@@ -34,7 +34,7 @@ void	handle_pointer(t_flags *data, va_list *argp)
 	free (str);
 }
 
-void	handle_oct(t_flags *data, char *str, unsigned long long int num)
+void	handle_oct(t_check *data, char *str, unsigned long long int num)
 {
 	char	*save;
 
@@ -55,7 +55,7 @@ void	handle_oct(t_flags *data, char *str, unsigned long long int num)
 	free (str);
 }
 
-char	*hash_hex_edge(t_flags *data, char *str, unsigned long long int num)
+char	*hash_hex_edge(t_check *data, char *str, unsigned long long int num)
 {
 	if (data->format == 'x' && num > 0)
 		str = ft_strjoin("0x", str);
@@ -64,7 +64,7 @@ char	*hash_hex_edge(t_flags *data, char *str, unsigned long long int num)
 	return (str);
 }
 
-char	*hash_hex(t_flags *data, char *str, unsigned long long int num)
+char	*hash_hex(t_check *data, char *str, unsigned long long int num)
 {
 	int	i;
 
@@ -93,7 +93,7 @@ char	*hash_hex(t_flags *data, char *str, unsigned long long int num)
 	return (str);
 }
 
-char	*handle_hex_zero(t_flags *data)
+char	*handle_hex_zero(t_check *data)
 {
 	char	*new;
 
@@ -108,7 +108,7 @@ char	*handle_hex_zero(t_flags *data)
 	return (new);
 }
 
-void	handle_hex(t_flags *data, char *str, unsigned long long int num)
+void	handle_hex(t_check *data, char *str, unsigned long long int num)
 {
 	char	*save;
 
@@ -130,5 +130,5 @@ void	handle_hex(t_flags *data, char *str, unsigned long long int num)
 	str = hash_hex(data, str, num);
 	free (save);
 	print_str(data, str);
-//	free (str);
+	free (str);
 }

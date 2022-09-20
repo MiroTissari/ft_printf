@@ -6,13 +6,13 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:48:30 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/15 17:17:24 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/20 13:35:01 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*hex_parcer(t_flags *data, char *str, int len)
+char	*hex_parcer(t_check *data, char *str, int len)
 {
 	char	c;
 	char	*new;
@@ -41,7 +41,7 @@ char	*hex_parcer(t_flags *data, char *str, int len)
 	return (new);
 }
 
-char	*parcer(t_flags *data, char *str, int len)
+char	*parcer(t_check *data, char *str, int len)
 {
 	char	c;
 	char	*new;
