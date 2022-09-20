@@ -6,7 +6,7 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:48:11 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/20 14:57:47 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:33:37 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ char	*hash_hex_edge(t_check *data, char *str, unsigned long long int num)
 		str = ft_strjoin("0x", str);
 	else if (data->format == 'X' && num > 0)
 		str = ft_strjoin("0X", str);
+	data->hash = 0;
 	return (str);
 }
 

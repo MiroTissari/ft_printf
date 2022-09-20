@@ -6,7 +6,7 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:48:35 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/20 13:35:08 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:15:17 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ char	*oux_precision(t_check *data, char *str, int len)
 	j = 0;
 	if (data->precision > len)
 	{
+		if (data->precision )
 		new = ft_strnew(data->precision);
 		while (i < (data->precision - len))
 			new[i++] = '0';

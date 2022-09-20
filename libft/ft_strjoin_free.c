@@ -6,7 +6,7 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 19:18:31 by mtissari          #+#    #+#             */
-/*   Updated: 2022/06/16 20:43:14 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:03:09 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ char	*ft_strjoin_free(char *s1, char *s2, int n, int tofree)
 	char	*new;
 
 	if (n == 0)
-		new = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)));
+		new = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
 	else
-		new = (char *)malloc(sizeof(char) * n);
+		new = ft_strnew(n);
 	if (!new)
 		return (NULL);
 	ft_strcpy(new, s1);

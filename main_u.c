@@ -867,7 +867,7 @@ int main()
 	ft_printf("MY PRINTF:\npointers: |%#-10x|\n", 0);
 	printf("PRINTF:\npointers: |%#-10x|\n", 0);
 
-	system ("leaks a.out");
+	system ("leaks basic");
 	return 0;
 }
 

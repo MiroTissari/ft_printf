@@ -6,7 +6,7 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:48:25 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/20 14:59:18 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:31:50 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ void	modify_di(t_check *data, va_list *argp)
 		num = (long int)va_arg(*argp, long int);
 	else
 		num = (int)va_arg(*argp, int);
-	handle_int(data, ft_itoa_base(num, DEC), num);
+	if (num == 0)
+		handle_int_zero(data, ft_itoa_base(num, DEC), num);
+	else
+		handle_int(data, ft_itoa_base(num, DEC), num);
 }
 
 void	modify_oux(t_check *data, va_list *argp, char format)
@@ -53,10 +56,7 @@ void	modify_oux(t_check *data, va_list *argp, char format)
 	else if (data->h == 1)
 		num = (unsigned char)va_arg(*argp, unsigned int);
 	else if (data->ll == 1)
-	{
 		num = va_arg(*argp, unsigned long long int);
-		printf("here");
-	}
 	else if (data->l == 1)
 		num = (unsigned long)va_arg(*argp, unsigned long int);
 	else
@@ -66,10 +66,7 @@ void	modify_oux(t_check *data, va_list *argp, char format)
 	if (format == 'u')
 		handle_uint(data, uitoa_base(num, DEC), num);
 	if (format == 'X')
-	{
-		printf("again");
 		handle_hex(data, uitoa_base(num, HEX), num);
-	}
 	if (format == 'x')
 		handle_hex(data, uitoa_base(num, HX), num);
 }

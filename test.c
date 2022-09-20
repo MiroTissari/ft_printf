@@ -8,7 +8,9 @@ int	main(void)
 	char	*str;
 	char	c;
 	char	*s;
+	unsigned long long int h;
 
+	h = 1LLU ;
 	s = "1.50000000099999444";
 	c = 'X';
 	str = "let's go";
@@ -94,6 +96,20 @@ int	main(void)
 	ft_printf("my_printf: \t|%10.0Llf|\n\n", 1.5);
 	printf("theprintf: \t|%10.0i| \t|% +.3li|\t|%.4lli|\n", 4, 57, 12);
 	ft_printf("my_printf: \t|%10.0i| \t|% +.3li|\t|%.4lli|\n", 4, 57, 12);
+
+	printf("PRINTF:\nu int: |%#-10.1llX|\n", h);
+	ft_printf("MY PRINTF:\nu int: |%#-10.1llX|\n", h);
+	printf("PRINTF:\nu int: |%#20.60llX|\n", h);
+	ft_printf("MY PRINTF:\nu int: |%#20.60llX|===\n", h);
+	printf("PRINTF:\nu int: |%#-10.30X|\n", h);
+	ft_printf("MY PRINTF:\nu int: |%#-10.30X|\n", h);
+	printf("PRINTF:\nu int: |%#10.30llx|\n", h);
+	ft_printf("MY PRINTF:\nu int: |%#10.30llx|----------\n", h);
+	printf("PRINTF:\nu int: |%#-5llX|\n", h);
+	ft_printf("MY PRINTF:\nu int: |%#-5llX|\n", h);
+	printf("PRINTF:\nu int: |%#10llX|\n", h);
+	ft_printf("MY PRINTF:\nu int: |%#10llX|\n", h);
+
 
 	system("\nleaks test");
 	printf("\n\n");

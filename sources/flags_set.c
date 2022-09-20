@@ -6,7 +6,7 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:47:58 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/20 15:03:23 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:10:05 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	set_width_and_precision(char *str, int i, t_check *data)
 	return (i);
 }
 
-void	set_check(char flag, t_check *data)
+void	set_flags(char flag, t_check *data)
 {
 	if (flag == ' ' && data->plus == 0)
 		data->space = 1;
@@ -103,7 +103,10 @@ int	verify_flags(char *s, int i)
 			&& s[num] != 'z')
 		{
 			if (s[num] <= 48 && s[num] >= 57)
+			{
 				write(1, "error", 6);
+				exit (0);
+			}
 		}
 		num++;
 	}

@@ -6,7 +6,7 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 13:23:16 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/20 13:58:45 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:25:56 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct s_check
 	int			ret_val;
 	int			index_add;
 	int			format;
-	char		*hex;
 
 	int			flag_nb;
 	int			hash;
@@ -51,12 +50,12 @@ typedef struct s_check
 int			ft_printf(const char *str, ...);
 void		set_values(t_check *data);
 void		format_identifier(const char *str, va_list *argp, t_check *data);
-int			check_check(char *str, t_check *data, int i);
+int			check_flags(char *str, t_check *data, int i);
 
 
 
 int			verify_flags(char *s, int i);
-void		set_check(char flag, t_check *data);
+void		set_flags(char flag, t_check *data);
 int			set_width_and_precision(char *str, int i, t_check *data);
 void		set_modifiers(char *str, int i, t_check *data);
 
@@ -77,6 +76,7 @@ char		*modifier_hh(t_check *data, va_list argp);*/
 
 void		handle_int(t_check *data, char *str, long long int num);
 void		handle_uint(t_check *data, char *str, unsigned long long int num);
+void		handle_int_zero(t_check *data, char *str, long long int num);
 
 void		handle_hex(t_check *data, char *str, unsigned long long int num);
 char		*hash_hex(t_check *data, char *str, unsigned long long int num);

@@ -6,7 +6,7 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 13:55:14 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/20 14:48:28 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:09:45 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	check_flags(char *str, t_check *data, int i)
 	while (str[i] == ' ' || str[i] == '0' || str[i] == '#' || str[i] == '-'
 		|| str[i] == '+')
 	{
-		set_check(str[i], data);
+		set_flags(str[i], data);
 		i++;
 	}
 	while ((str[i] >= 48 && str[i] <= 57) || str[i] == '.')
