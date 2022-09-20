@@ -15,7 +15,7 @@ CC := gcc
 CFLAGS := -Wall -Wextra -Werror -c
 FILES := ft_printf.c flags_set.c ft_itoa_base.c char_and_string.c parcer.c \
 		handle_base.c handle_ints.c handle_float.c number_modifiers.c \
-		precision.c
+		precision.c ft_ftoa.c
 O_FILES := $(FILES:.c=.o)
 INCLUDES := -I includes
 LIBFT := libft

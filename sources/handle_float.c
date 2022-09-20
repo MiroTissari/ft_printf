@@ -12,35 +12,81 @@
 
 #include "ft_printf.h"
 
+char	*float_flags(t_flags *data, char *str)
+{
+	if (data->hash == 1 && !ft_strchr(str, '.'))
+		str = ft_strjoin_free(str, ".", 0, 1);
+	if (data->plus == 1)
+		str = ft_strjoin_free("+", str, 0, 2);
+	else if (data->space == 1)
+		str = ft_strjoin_free(" ", str, 0, 2);
+	return (str);
+}
+
+char	*float_nan_inf(long double num)
+{
+	char	*str;
+
+	if (num == (1.0 / 0.0))
+		str = ft_strdup("inf");
+	else if (num == -(1.0 / 0.0))
+		str = ft_strdup("-inf");
+	else if (num != num)
+		str = ft_strdup("nan");
+	return (str);
+}
+
 long double	float_round(t_flags *data, int prec, long double num)
 {
 	long double	round;
+	long double	ret;
 
 	round = 0.5;
-	if (num < 0)
+	if (data->negative == 1)
 	{
-		round *= -1;
-		data->negative = 1;
+		//printf("num: %Lf\t\t", num);
+		num = -num;
+		//round *= -1;
+		//printf("checkOOOO\t\t");
+		//printf("num: %Lf\t\t", num);
 	}
-	while (prec > 0)
+	ret = num;
+	while (prec-- > 0)
 	{
 		round /= 10.0;
-		prec--;
+		num *= 10.0;
 	}
-	return (round);
-}
-
-long double	float_precision(t_flags *data, int prec, long double num)
-{
-	num += float_round(data, prec, num);
-	while (num > 1)
-		num /= 10;
-	return (num);//vain compilee varten
+	if (num - (long long)num == 0.5)
+	{
+		if ((long long)num % 2 != 1)
+			ret = ret - round;
+		else
+			ret = ret + round;
+	}
+	else
+		ret = ret + round;
+	return (ret);
 }
 
 void	handle_float(t_flags *data, long double num)
 {
-	long double	flo;
+	char		*str;
+	char		*save;
 
-	flo = float_precision(data, data->precision, num);
+	if (num == 1.0 / 0.0 || num == -1.0 / 0.0 || num != num)
+		str = float_nan_inf(num);
+	else
+	{
+		num = float_round(data, data->precision, num);
+		str = ft_ftoa(num, data->precision, data->negative);
+	}
+	if (data->width >= (int)ft_strlen(str))
+		save = parcer(data, str, ft_strlen(str));
+	else
+		save = ft_strdup(str);
+	free (str);
+	str = float_flags(data, save);
+	print_str(data, str);
+//	printf("neg: %i", data->negative);
+	free (str);
 }

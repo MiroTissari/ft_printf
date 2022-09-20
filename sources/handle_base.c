@@ -12,12 +12,12 @@
 
 #include "ft_printf.h"
 
-void	handle_pointer(t_flags *data, va_list argp)
+void	handle_pointer(t_flags *data, va_list *argp)
 {
 	char	*str;
 	char	*save;
 
-	str = ft_itoa_base((unsigned long)va_arg(argp, unsigned long), data->hex);
+	str = ft_itoa_base((unsigned long)va_arg(*argp, unsigned long), HX);
 	save = oux_precision(data, str, ft_strlen(str));
 	free (str);
 	save = ft_strjoin_free("0x", save, 0, 2);

@@ -808,10 +808,10 @@ int main()
 	ft_printf("MY PRINTF:\nu int: |%+i|!!!\n", NULL);
 	printf("PRINTF:\nu int: |%i|\n", NULL);
 	ft_printf("MY PRINTF:\nu int: |%i|\n", NULL);
-/*	printf("PRINTF:\nu int: |%+f|\n", NULL);
+	printf("PRINTF:\nu int: |%+f|\n", NULL);
 	ft_printf("MY PRINTF:\nu int: |%+f|\n", NULL);
 	printf("PRINTF:\nu int: |%f|\n", NULL);
-	ft_printf("MY PRINTF:\nu int: |%f|\n", NULL);*/
+	ft_printf("MY PRINTF:\nu int: |%f|\n", NULL);
 	printf("PRINTF:\nu int: |%s|\n", NULL);
 	ft_printf("MY PRINTF:\nu int: |%s|\n", NULL);
 	printf("PRINTF:\nu int: |%+s|\n", NULL);
@@ -822,8 +822,8 @@ int main()
 	ft_printf("MY PRINTF:\nu int: |%c|\n", NULL);
 	printf("PRINTF:\nu int: |%+p|!!!\n", NULL);
 	ft_printf("MY PRINTF:\nu int: |%+p|!!!\n", NULL);
-/*	printf("PRINTF:\nu int: |%|\n", NULL);
-	ft_printf("MY PRINTF:\nu int: |%|\n", NULL);*/
+	printf("PRINTF:\nu int: |%|\n", NULL);
+/*	ft_printf("MY PRINTF:\nu int: |%|\n", NULL);*/
 
 	ft_printf("MY PRINTF:\npointers: |%01d|\n", -1);
 	printf("PRINTF:\npointers: |%01d|\n", -1);

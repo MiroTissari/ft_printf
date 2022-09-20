@@ -33,6 +33,7 @@ void	set_values(t_flags *data)
 	data->width = 0;
 	data->precision = 0;
 	data->format = 0;
+	data->negative = 0;
 }
 
 int	check_flags(char *str, t_flags *data, int i)
@@ -61,7 +62,7 @@ int	check_flags(char *str, t_flags *data, int i)
 	return (nb);
 }
 
-void	format_identifier(const char *str, va_list argp, t_flags *data)
+void	format_identifier(const char *str, va_list *argp, t_flags *data)
 {
 	int	i;
 
@@ -70,15 +71,15 @@ void	format_identifier(const char *str, va_list argp, t_flags *data)
 	if (str[i] == '%')
 		handle_char(data, '%');
 	else if (str[i] == 'c')
-		handle_char(data, va_arg(argp, int));
+		handle_char(data, va_arg(*argp, int));
 	else if (str[i] == 's')
-		handle_string(data, va_arg(argp, char *));
+		handle_string(data, va_arg(*argp, char *));
 	else if (str[i] == 'd' || str[i] == 'i')
 		modify_di(data, argp);
 	else if (str[i] == 'o' || str[i] == 'u' || str[i] == 'x' || str[i] == 'X')
 		modify_oux(data, argp, str[i]);
-/*	else if (str[i] == 'f')
-		modify_float(data, argp);*/
+	else if (str[i] == 'f')
+		modify_float(data, argp);
 	else if (str[i] == 'p')
 		handle_pointer(data, argp);
 /*	else
@@ -103,7 +104,7 @@ int	ft_printf(const char *str, ...)
 		{
 			set_values(&data);
 			i = check_flags(save, &data, i + 1);
-			format_identifier(&save[i], argp, &data);
+			format_identifier(&save[i], &argp, &data);
 		}
 		else
 			data.ret_val += write(1, &save[i], 1);

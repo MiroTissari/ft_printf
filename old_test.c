@@ -30,7 +30,7 @@ char	*ft_strnew(size_t size)
 	str[size] = '\0';
 	return (str);
 }
-
+*/
 char	*rounding_floats(char *str, int len)	//len needs to be already incremented so that it has whole numbers and '.' in it!
 {
 	char	*new;
@@ -54,20 +54,17 @@ char	*rounding_floats(char *str, int len)	//len needs to be already incremented 
 				temp[i++] = str[len] + 1;
 			len--;
 		}
-		printf("1st temp: %s\n", temp);
 		while (len >= 0 || str[len])
 			temp[i++] = str[len--];
-		printf("2nd temp: %s\n", temp);
 		new = ft_strnew(i + 1);
 		len = 0;
 		while (i >= 0)
 			new[len++] = temp[--i];
-		printf("1st new: %s\n", new);
 		return (new);
 	}
 	return (str);
 }
-*/
+
 int	main(void)
 {
 	int	i;

@@ -89,5 +89,6 @@ t_list	*ft_str_to_lst(char const *s, char c);
 int		ft_lstcount(t_list **list);
 void	ft_lstadd_back(t_list **alst, t_list *new);
 char	*ft_strjoin_free(char *s1, char *s2, int n, int tofree);
+int		ft_is_neg(double num);
 
 #endif

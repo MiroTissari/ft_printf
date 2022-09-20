@@ -43,8 +43,8 @@ int	main(void)
 	printf("theprintf: |% -#20.12o|\n", i);
 	ft_printf("my printf: |%- #20.12o|\n\n", i);
 	printf("UNSIGNED INT:\n");
-	printf("theprintf: |%#20.12u|\n", 0);
-	ft_printf("my printf: |%#20.12u|\n", 0);
+	printf("theprintf: |% +.3llu|\t|% +10.12u|\n", 0ll, 1);
+	ft_printf("my printf: |% +.3llu|\t|% +10.12u|\n", 0ll, 1);
 	printf("theprintf: |% -#20.12u|\n", 938776);
 	ft_printf("my printf: |% -#20.12u|\n", 938776);
 	printf("theprintf: |%+#20.12u|\n", 938776);
@@ -69,14 +69,31 @@ int	main(void)
 	//printf("%%n for the previous: |%i|\n", i);
 	//printf("|%05c| \n", 'f');
 	//printf("|%+5%|");		//check how this should behave!!!!!
-	system("leaks ft_printf.c");
-	printf("\n\n\n");
+	
+	printf("\n\nFLOATS:\n\n");
 //	ft_printf("%s\n", output);
-	printf("f & L \t|%0lf| \t|%Lf|\n", 1.5, 1.5l);
-	printf("f & l \t|%.0lf| \t|%lf|\n", 2.5f, 1.5l);
-	printf("f & l \t|%#.0lf| \t|%f|\n", 2.5f, 1.5);
-	printf("f & L \t|%#.10lf| \t|%Lf|\n", 1.5f, 1.5L);
-	printf("f & L \t|%10.0lf| \t|%Lf|\n", 1.5f, 1.5L);
+	printf("theprintf: \t|%0lf| \t|%Lf|\n", 1.5, 1.5l);
+	ft_printf("my_printf: \t|%0lf| \t|%Lf|\n", 1.5, 1.5l);
+	printf("theprintf: \t|%+.0lf| \t|%lf|\n", 2.5f, 1.5l);
+	ft_printf("my_printf: \t|%+.0lf| \t|%lf|\n", 2.5f, 1.5l);
+	printf("theprintf: \t|%#.0lf| \t|%f|\n", 2.5f, 1.5);
+	ft_printf("my_printf: \t|%#.0lf| \t|%f|\n", 2.5f, 1.5);
+	printf("theprintf: \t|%#.10lf| \t|%Lf|\n", 1.5555555f, 1.5L);
+	ft_printf("my_printf: \t|%#.10lf| \t|%Lf|\n", 1.5555555f, 1.5L);
+	printf("theprintf: \t|%10.0lf| \t|%Lf|\n", -1.5f, 1.5L);
+	ft_printf("my_printf: \t|%10.0lf| \t|%Lf|\n", -1.5f, 1.5L);
+	printf("theprintf: \t|%10lf| \t|%.3Lf|\n", 1.999999999999999, 0.0L);
+	ft_printf("my_printf: \t|%10lf| \t|%.3Lf|\n", 1.99999999999999, 0.0L);
+	ft_printf("my_printf: \t|%10.0f| \t|% +.3Lf|\t|%.4f|\n", 4.5, 0.0L, 0.0/0);
+	printf("theprintf: \t|%10.0f| \t|% +.3Lf|\t|%.4f|\n", 4.5, 0.0L, 0.0/0);
+	
+	printf("theprintf: \t|%10.0Llf|\n", 1.5);
+	ft_printf("my_printf: \t|%10.0Llf|\n\n", 1.5);
+	printf("theprintf: \t|%10.0i| \t|% +.3li|\t|%.4lli|\n", 4, 57, 12);
+	ft_printf("my_printf: \t|%10.0i| \t|% +.3li|\t|%.4lli|\n", 4, 57, 12);
+
+	system("\nleaks test");
+	printf("\n\n");
 //	ft_printf("%X %i\n", 255, -12345);
 //	ft_printf("%d and %s\n", 345, "check");
 //	ft_printf("%++++++0000lllhlhlhlhlhlhlhlhd", 22525526262);

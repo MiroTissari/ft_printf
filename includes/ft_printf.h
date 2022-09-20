@@ -50,7 +50,7 @@ typedef struct s_flags
 
 int			ft_printf(const char *str, ...);
 void		set_values(t_flags *data);
-void		format_identifier(const char *str, va_list argp, t_flags *data);
+void		format_identifier(const char *str, va_list *argp, t_flags *data);
 int			check_flags(char *str, t_flags *data, int i);
 
 
@@ -65,9 +65,9 @@ void		print_char(t_flags *data, int chr);
 void		print_str(t_flags *data, char *str);
 char		*deal_null(char *str, t_flags *data);
 
-void		modify_float(t_flags *data, va_list argp);
-void		modify_di(t_flags *data, va_list argp);
-void		modify_oux(t_flags *data, va_list argp, char format);
+void		modify_float(t_flags *data, va_list *argp);
+void		modify_di(t_flags *data, va_list *argp);
+void		modify_oux(t_flags *data, va_list *argp, char format);
 
 /*void		handle_numbers(t_flags *data, va_list argp, char format);
 char		*modifier_check(t_flags *data, va_list argp, char format);
@@ -82,11 +82,15 @@ char		*hash_hex(t_flags *data, char *str, unsigned long long int num);
 char		*hash_hex_edge(t_flags *data, char *str, unsigned long long int num);
 char		*handle_hex_zero(t_flags *data);
 void		handle_oct(t_flags *data, char *str, unsigned long long int num);
-void		handle_pointer(t_flags *data, va_list argp);
+void		handle_pointer(t_flags *data, va_list *argp);
 
 void		handle_float(t_flags *data, long double num);
-long double	float_precision(t_flags *data, int prec, long double num);
 long double	float_round(t_flags *data, int prec, long double num);
+char		*float_nan_inf(long double num);
+char		*float_flags(t_flags *data, char *str);
+
+char		*ft_ftoa(long double num, int precision, int neg);
+char		*get_decimal(long double dec, int precision);
 
 char		*uitoa_base(unsigned long long int nb, char *base);
 char		*ft_itoa_base(long long int nb, char *base);
