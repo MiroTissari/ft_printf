@@ -12,6 +12,34 @@
 
 #include "ft_printf.h"
 
+char	*pointer_parcer(t_check *data, char *str, int len)
+{
+	char	c;
+	char	*new;
+	int		i;
+
+	i = 0;
+	c = ' ';
+	if (data->zero == 1)
+		c = '0';
+	if (data->zero == 0 && (data->plus == 1 || data->space == 1))
+		pointer_flags(data, str);
+	new = ft_strnew(data->width);
+	new = ft_memset(new, c, data->width);
+	if (data->minus == 0 && data->width > len)
+	{
+		while (new[data->width - len--] != '\0')
+			new[data->width - 1 - len] = str[i++];
+	}
+	else
+	{
+		len = 2;
+		while (str[i] != '\0')
+			new[len++] = str[i++];
+	}
+	return (new);
+}
+
 char	*hex_parcer(t_check *data, char *str, int len)
 {
 	char	c;
@@ -64,5 +92,7 @@ char	*parcer(t_check *data, char *str, int len)
 		while (str[i])
 			new[len++] = str[i++];
 	}
-	return (new);	//SPACE && PLUS!!
+	if (data->format == 'd' || data->format == 'i' || data->format == 'u')
+			new = int_flag_check(data, new, ft_strlen(new));
+	return (new);
 }

@@ -24,7 +24,7 @@ void	set_values(t_check *data)
 	data->space = 0;
 	data->zero = 0;
 	data->index_add = 0;
-	data->period = 0;
+	data->dot = 0;
 	data->l = 0;
 	data->ll = 0;
 	data->h = 0;
@@ -36,30 +36,40 @@ void	set_values(t_check *data)
 	data->negative = 0;
 }
 
-int	check_flags(char *str, t_check *data, int i)
+int	false_output(char *str, t_check *data, int i, int len)
+{
+	while (len >= 0)
+	{
+		data->ret_val += write(1, &str[i++], 1);
+		len--;
+	}
+	return (i - 1);
+}
+
+int	check_flags(char *str, t_check *data, int i, va_list *argp)
 {
 	int	nb;
 
-	nb = verify_flags(&str[i], i);
+	nb = verify_flags(&str[i]);
+	if (nb != 0)
+		return (false_output(str, data, i - 1, nb + 1));
+	nb = i;
 	while (str[i] == ' ' || str[i] == '0' || str[i] == '#' || str[i] == '-'
 		|| str[i] == '+')
 	{
 		set_flags(str[i], data);
 		i++;
 	}
-	while ((str[i] >= 48 && str[i] <= 57) || str[i] == '.')
-	{
+	if ((str[i] >= 48 && str[i] <= 57) || str[i] == '.')
 		i = set_width_and_precision(str, i, data);
-		if (str[i] == '.')
-			data->period = 1;
-		i++;
-	}
-	//printf("\nwidth: %i\t\t precision: %i\n", data->width, data->precision);
 	while (str[i] == 'l' || str[i] == 'h' || str[i] == 'L')
 	{
 		set_modifiers(str, i, data);
 		i++;
 	}
+	if (data->l && data->cap_l)
+		return (false_output(str, data, nb - 1, i - nb));
+	format_identifier(&str[i], argp, data);
 	return (i);
 }
 
@@ -104,8 +114,7 @@ int	ft_printf(const char *str, ...)
 		if (save[i] == '%' && save[i + 1])
 		{
 			set_values(&data);
-			i = check_flags(save, &data, i + 1);
-			format_identifier(&save[i], &argp, &data);
+			i = check_flags(save, &data, i + 1, &argp);
 		}
 		else
 			data.ret_val += write(1, &save[i], 1);

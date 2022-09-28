@@ -42,9 +42,9 @@ int main()
 	printf("PRINTF:\nd_i int: |% lld|\n", m);
 	ft_printf("MY PRINTF:\nd_i int: |%+15.6lld|\n", m);
 	printf("PRINTF:\nd_i int: |%+15.6lld|\n", m);
-	ft_printf("MY PRINTF:\nd_i int: |%-+15.24lld|\n", m);
+	ft_printf("MY PRINTF:\nd_i int: |%-+15.24lld|----\n", m);
 	printf("PRINTF:\nd_i int: |%-+15.24lld|\n", m);
-	ft_printf("MY PRINTF:\nd_i int: |%- 15.24lld|\n", m);
+	ft_printf("MY PRINTF:\nd_i int: |%- 15.24lld|----\n", m);
 	printf("PRINTF:\nd_i int: |%- 15.24lld|\n", m);
 	ft_printf("MY PRINTF:\nd_i int: |%-30lld|\n", m);
 	printf("PRINTF:\nd_i int: |%-30lld|\n", m);
@@ -238,53 +238,55 @@ int main()
 	ft_printf("MY PRINTF:\nd_i int: |%010.4lld|\n", 11LL);
 	printf("PRINTF:\nd_i int: |%010.4lld|\n", 11LL);
 	printf("\n\n\n\n\n\n\n\n");
-	ft_printf("MY PRINTF:\nd_i int: |%+010.2d|\n", 0);
+	ft_printf("MY PRINTF:\nd_i int: |%+010.2d|--\n", 0);
 	printf("PRINTF:\nd_i int: |%+010.2d|\n", 0);
-	ft_printf("MY PRINTF:\nd_i int: |%+010.1d|\n", 0);
+	ft_printf("MY PRINTF:\nd_i int: |%010.2d|--\n", 2);
+	printf("PRINTF:\nd_i int: |%010.2d|\n", 2);
+	ft_printf("MY PRINTF:\nd_i int: |%+010.1d|--\n", 0);
 	printf("PRINTF:\nd_i int: |%+010.1d|\n", 0);
-	ft_printf("MY PRINTF:\nd_i int: |%+0.1d|\n", 0);
+	ft_printf("MY PRINTF:\nd_i int: |%+0.1d|--\n", 0);
 	printf("PRINTF:\nd_i int: |%+0.1d|\n", 0);
 	ft_printf("MY PRINTF:\nd_i int: |%+10.1d|\n", 0);
 	printf("PRINTF:\nd_i int: |%+10.1d|\n", 0);
-	ft_printf("MY PRINTF:\nd_i int: |%-+10.1d|\n", 0);
+	ft_printf("MY PRINTF:\nd_i int: |%-+10.1d|--\n", 0);
 	printf("PRINTF:\nd_i int: |%-+10.1d|\n", 0);
 	ft_printf("MY PRINTF:\nd_i int: |%.d|\n", 0);
 	printf("PRINTF:\nd_i int: |%.d|\n", 0);
 	ft_printf("MY PRINTF:\nd_i int: |%3.d|\n", 0);
 	printf("PRINTF:\nd_i int: |%3.d|\n", 0);
-	ft_printf("MY PRINTF:\nd_i int: |%+3.d|\n", 0);
+	ft_printf("MY PRINTF:\nd_i int: |%+3.d|--\n", 0);
 	printf("PRINTF:\nd_i int: |%+3.d|\n", 0);
-	ft_printf("MY PRINTF:\nd_i int: |%+03.d|\n", 0);
+	ft_printf("MY PRINTF:\nd_i int: |%+03.d|--\n", 0);
 	printf("PRINTF:\nd_i int: |%+03.d|\n", 0);
-	ft_printf("MY PRINTF:\nd_i int: |% .d|\n", 0);
+	ft_printf("MY PRINTF:\nd_i int: |% .d|--\n", 0);
 	printf("PRINTF:\nd_i int: |% .d|\n", 0);
 	ft_printf("MY PRINTF:\nd_i int: |%0.d|\n", 0);
 	printf("PRINTF:\nd_i int: |%0.d|\n", 0);
 	ft_printf("MY PRINTF:\nd_i int: |%04.d|\n", 0);
 	printf("PRINTF:\nd_i int: |%04.d|\n", 0);
-	ft_printf("MY PRINTF:\nd_i int: |%+.d|\n", 0);
+	ft_printf("MY PRINTF:\nd_i int: |%+.d|--\n", 0);
 	printf("PRINTF:\nd_i int: |%+.d|\n", 0);
-	ft_printf("MY PRINTF:\nd_i int: |%+030d|\n", 0);
+	ft_printf("MY PRINTF:\nd_i int: |%+030d|--\n", 0);
 	printf("PRINTF:\nd_i int: |%+030d|\n", 0);
-	ft_printf("MY PRINTF:\nd_i int: |% -10d|\n", 0);
+	ft_printf("MY PRINTF:\nd_i int: |% -10d|--\n", 0);
 	printf("PRINTF:\nd_i int: |% -10d|\n", 0);
 	ft_printf("MY PRINTF:\nd_i int: |%  10d|\n", 0);
 	printf("PRINTF:\nd_i int: |%  10d|\n", 0);
-	ft_printf("MY PRINTF:\nd_i int: |%- 10d|\n", 0);
+	ft_printf("MY PRINTF:\nd_i int: |%- 10d|--\n", 0);
 	printf("PRINTF:\nd_i int: |%- 10d|\n", 0);
-	ft_printf("MY PRINTF:\nd_i int: |%-+10d|\n", 0);
+	ft_printf("MY PRINTF:\nd_i int: |%-+10d|--\n", 0);
 	printf("PRINTF:\nd_i int: |%-+10d|\n", 0);
 
 	printf("\n\nUnsigned Ints:\n");
 
 	printf("PRINTF:\nu int: |%10.u|\n", 0);
-	ft_printf("MY PRINTF:\nu int: |%10.u|----\n", 0);
+	ft_printf("MY PRINTF:\nu int: |%10.u|\n", 0);
 	printf("PRINTF:\nu int: |%-10.u|\n", 0);
-	ft_printf("MY PRINTF:\nu int: |%-10.u|----\n", 0);
+	ft_printf("MY PRINTF:\nu int: |%-10.u|\n", 0);
 	printf("PRINTF:\nu int: |%010.u|\n", 0);
-	ft_printf("MY PRINTF:\nu int: |%010.u|----\n", 0);
+	ft_printf("MY PRINTF:\nu int: |%010.u|\n", 0);
 	printf("PRINTF:\nu int: |%.u|\n", 0);
-	ft_printf("MY PRINTF:\nu int: |%.u|----\n", 0);
+	ft_printf("MY PRINTF:\nu int: |%.u|\n", 0);
 	printf("PRINTF:\nu int: |%-10.15u|\n", 0);
 	ft_printf("MY PRINTF:\nu int: |%-10.15u|\n", 0);
 	printf("PRINTF:\nu int: |%-10u|\n", 0);
@@ -298,7 +300,7 @@ int main()
 	printf("PRINTF:\nu int: |%10.15u|\n", 0);
 	ft_printf("MY PRINTF:\nu int: |%10.15u|\n", 0);
 	printf("PRINTF:\nu int: |%10.u|\n", 0);
-	ft_printf("MY PRINTF:\nu int: |%10.u|----\n", 0);
+	ft_printf("MY PRINTF:\nu int: |%10.u|\n", 0);
 	printf("PRINTF:\nu int: |%10.1u|\n", 0);
 	ft_printf("MY PRINTF:\nu int: |%10.1u|\n", 0);
 	printf("PRINTF:\nu int: |%5u|\n", 0);
@@ -361,7 +363,7 @@ int main()
 	ft_printf("MY PRINTF:\nu int: |%050llu|\n", h);
 	printf("PRINTF:\nu int: |%llu|\n", h);
 	ft_printf("MY PRINTF:\nu int: |%llu|\n", h);
-/*	printf("\nUnsigned Big Hexs\n");
+	printf("\nUnsigned Big Hexs\n");
 	printf("PRINTF:\nu int: |%10.X|\n", 0);
 	ft_printf("MY PRINTF:\nu int: |%10.X|\n", 0);
 	printf("PRINTF:\nu int: |%-10.X|\n", 0);
@@ -510,9 +512,9 @@ int main()
 	printf("PRINTF:\nd_i int: |%-+5.1llo|\n", 0ull);
 	ft_printf("MY PRINTF:\nd_i int: |%- 5.1llo|\n", 0ull); 
 	printf("PRINTF:\nd_i int: |%- 5.1llo|\n", 0ull);
-	ft_printf("MY PRINTF:\nd_i int: |%0- 5.llo|\n", 0ull); //
+	ft_printf("MY PRINTF:\nd_i int: |%0- 5.llo|--\n", 0ull); //
 	printf("PRINTF:\nd_i int: |%0- 5.llo|\n", 0ull);
-	ft_printf("MY PRINTF:\nd_i int: |%-05.llo|\n", 0ull);
+	ft_printf("MY PRINTF:\nd_i int: |%-05.llo|--\n", 0ull);
 	printf("PRINTF:\nd_i int: |%-05.llo|\n", 0ull);
 	printf("\n\n\n\n\n\n\n");
 	ft_printf("MY PRINTF:\nd_i int: |% 5.llo|\n", 1ull);
@@ -557,9 +559,9 @@ int main()
 	printf("PRINTF:\nd_i int: |%#-+5.1llo|\n", 0ull);
 	ft_printf("MY PRINTF:\nd_i int: |%#- 5.1llo|\n", 0ull); 
 	printf("PRINTF:\nd_i int: |%#- 5.1llo|\n", 0ull);
-	ft_printf("MY PRINTF:\nd_i int: |%#0- 5.llo|\n", 0ull); //
+	ft_printf("MY PRINTF:\nd_i int: |%#0- 5.llo|-----\n", 0ull); //
 	printf("PRINTF:\nd_i int: |%#0- 5.llo|\n", 0ull);
-	ft_printf("MY PRINTF:\nd_i int: |%#-05.llo|\n", 0ull);
+	ft_printf("MY PRINTF:\nd_i int: |%#-05.llo|-----\n", 0ull);
 	printf("PRINTF:\nd_i int: |%#-05.llo|\n", 0ull);
 	printf("\n\n\n\n\n\n\n");
 	ft_printf("MY PRINTF:\nd_i int: |%# 5.llo|\n", 1ull);
@@ -620,7 +622,12 @@ int main()
 	printf("PRINTF:\nd_i int: |%#05.llx|\n", 1ull);
 	ft_printf("MY PRINTF:\nd_i int: |%# 05.llx|\n", 1ull);
 	printf("PRINTF:\nd_i int: |%# 05.llx|\n", 1ull);
-*/
+
+
+	ft_printf("MY PRINTF:\nd_i int: |%+010.2lld|\n", 0LL);
+	printf("PRINTF:\nd_i int: |%+010.2lld|\n", 0LL);
+	ft_printf("MY PRINTF:\nd_i int: |%+010.2lld|\n", 1LL);
+	printf("PRINTF:\nd_i int: |%+010.2lld|\n", 1LL);
 
 	system("leaks a.out");
 	return 0;

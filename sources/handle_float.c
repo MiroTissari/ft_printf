@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char	*float_check(t_check *data, char *str)
+char	*float_flag_check(t_check *data, char *str)
 {
 	if (data->hash == 1 && !ft_strchr(str, '.'))
 		str = ft_strjoin_free(str, ".", 0, 1);
@@ -32,42 +32,68 @@ char	*float_nan_inf(long double num, t_check *data)
 	else if (num == -(1.0 / 0.0))
 		str = ft_strdup("-inf");
 	else if (num != num)
-		str = ft_strdup("nan");
+	{
+		if (data->negative == 1)
+			str = ft_strdup("-nan");
+		else
+			str = ft_strdup("nan");
+	}
 	else
 		str = ft_ftoa(num, data->precision, data->negative);
 	return (str);
 }
 
-long double	float_round(t_check *data, int prec, long double num)
+long double	double_power(long double num, int prec)
+{
+	long double	i;
+	int			j;
+
+	j = 0;
+	i = 1.0;
+	while (j < prec)
+	{
+		i *= num;
+		j++;
+	}
+	return (i);
+}
+
+long double	bankers_round(t_check *data, int prec, long double num)
 {
 	long double	round;
 	long double	ret;
 
 	round = 0.5;
 	if (data->negative == 1)
-	{
-		//printf("num: %Lf\t\t", num);
 		num = -num;
-		//round *= -1;
-		//printf("checkOOOO\t\t");
-		//printf("num: %Lf\t\t", num);
-	}
-	ret = num;
-	while (prec-- > 0)
+	while (prec > 0)
 	{
-		round /= 10.0;
-		num *= 10.0;
+		round /= 10;
+		prec--;
 	}
-	if (num - (long long)num == 0.5)
+	ret = num + round;
+	return (ret);
+}
+
+long double	float_round(t_check *data, int prec, long double num)
+{
+	long double	temp;
+	long double	temp2;
+
+	if (data->negative == 1)
+		num = -num;
+	temp = num * double_power(10, prec);
+	temp2 = (temp - (long long)temp) * 10;
+	if (temp - (long long)temp == 0.5 || (temp2 < 5.0 && temp2 > 4.9))
 	{
-		if ((long long)num % 2 != 1)
-			ret = ret - round;
+		if ((long long)temp % 2 != 1 || data->cap_l == 1 || temp2 < 5)
+			num = temp / double_power(10, prec);
 		else
-			ret = ret + round;
+			num = bankers_round(data, prec, num);
 	}
 	else
-		ret = ret + round;
-	return (ret);
+			num = bankers_round(data, prec, num);
+	return (num);
 }
 
 void	handle_float(t_check *data, long double num)
@@ -87,8 +113,7 @@ void	handle_float(t_check *data, long double num)
 	else
 		save = ft_strdup(str);
 	free (str);
-	str = float_check(data, save);
+	str = float_flag_check(data, save);
 	print_str(data, str);
-//	printf("neg: %i", data->negative);
 	free (str);
 }

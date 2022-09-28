@@ -20,7 +20,7 @@ void	modify_float(t_check *data, va_list *argp)
 		num = va_arg(*argp, long double);
 	else
 		num = (double)va_arg(*argp, double);
-	if (data->period == 0)
+	if (data->dot == 0)
 		data->precision = 6;
 	if (ft_is_neg(num))
 		data->negative = 1;
@@ -41,10 +41,12 @@ void	modify_di(t_check *data, va_list *argp)
 		num = (long int)va_arg(*argp, long int);
 	else
 		num = (int)va_arg(*argp, int);
+	if (num < 0)
+		data->negative = 1;
 	if (num == 0)
-		handle_int_zero(data, ft_itoa_base(num, DEC), num);
+		handle_int_zero(data, ft_itoa_base(num, DEC));
 	else
-		handle_int(data, ft_itoa_base(num, DEC), num);
+		handle_int(data, ft_itoa_base(num, DEC));
 }
 
 void	modify_oux(t_check *data, va_list *argp, char format)
@@ -63,8 +65,10 @@ void	modify_oux(t_check *data, va_list *argp, char format)
 		num = (unsigned int)va_arg(*argp, unsigned int);
 	if (format == 'o')
 		handle_oct(data, uitoa_base(num, OCT), num);
-	if (format == 'u')
-		handle_uint(data, uitoa_base(num, DEC), num);
+	if (format == 'u' && num == 0)
+		handle_uint_zero(data, uitoa_base(num, DEC));
+	else if (format == 'u')
+		handle_uint(data, uitoa_base(num, DEC));
 	if (format == 'X')
 		handle_hex(data, uitoa_base(num, HEX), num);
 	if (format == 'x')

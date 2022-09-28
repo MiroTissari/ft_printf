@@ -34,34 +34,45 @@ void	set_modifiers(char *str, int i, t_check *data)
 		data->cap_l = 1;
 }
 
-int	set_width_and_precision(char *str, int i, t_check *data)
+void	length_check(char *str, int i)
 {
 	int		len;
-	char	temp[11];
 
 	len = 0;
 	while (str[i + len] >= 48 && str[i + len] <= 57)
 		len++;
-	/*if (len > 10)
-		error_handling("directive output of 2147483648 bytes exceeds ‘INT_MAX’")*/
-	if (data->width == 0 && data->period == 0)
+	if (len > 10)
 	{
-		len = 0;
-		while (str[i] >= 48 && str[i] <= 57)
-			temp[len++] = str[i++];
-		if (str[i] != '.')
-			i--;
-		temp[len] = '\0';
-		data->width = ft_atoi(temp);
+		write(1, "width/precision too big", 24);
+		exit (1);
 	}
-	else if (data->precision == 0 && data->period == 1)
+}
+
+int	set_width_and_precision(char *str, int i, t_check *data)
+{
+	int		j;
+	char	width[11];
+	char	prec[11];
+
+	length_check(str, i);
+	j = 0;
+	if (data->width == 0 && data->dot == 0)
 	{
-		len = 0;
 		while (str[i] >= 48 && str[i] <= 57)
-			temp[len++] = str[i++];
-		i--;
-		temp[len] = '\0';
-		data->precision = ft_atoi(temp);
+			width[j++] = str[i++];
+		if (str[i] == '.')
+		{
+			data->dot = 1;
+			i++;
+		}
+		data->width = ft_atoi(width);
+	}
+	if (data->precision == 0 && data->dot == 1)
+	{
+		j = 0;
+		while (str[i] >= 48 && str[i] <= 57)
+			prec[j++] = str[i++];
+		data->precision = ft_atoi(prec);
 	}
 	return (i);
 }
@@ -85,7 +96,7 @@ void	set_flags(char flag, t_check *data)
 	else if (flag == '#')
 		data->hash = 1;
 }
-
+/*
 int	verify_flags(char *s, int i)
 {
 	int	num;
@@ -111,4 +122,29 @@ int	verify_flags(char *s, int i)
 		num++;
 	}
 	return (i + num);
+}
+*/
+int	verify_flags(char *s)
+{
+	int	num;
+
+	num = 0;
+	while (s[num] == ' ' || s[num] == '0' || s[num] == '#' || s[num] == '-'
+		|| s[num] == '+')
+		num++;
+	while ((s[num] >= 48 && s[num] <= 57))
+		num++;
+	if (s[num] == '.')
+	{
+		num++;
+		while ((s[num] >= 48 && s[num] <= 57))
+			num++;
+	}
+	while (s[num] == 'l' || s[num] == 'h' || s[num] == 'L')
+		num++;
+	if (s[num] != '%' && s[num] != 'f' && s[num] != 'p' && s[num] != 'c'
+		&& s[num] != 's' && s[num] != 'd' && s[num] != 'i' && s[num] != 'o'
+		&& s[num] != 'u' && s[num] != 'x' && s[num] != 'X')
+		return (num);
+	return (0);
 }

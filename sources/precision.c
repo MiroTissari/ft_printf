@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char	*di_precision(t_check *data, char *str, int len, long long int num)
+char	*di_precision(t_check *data, char *str, int len)
 {
 	int		i;
 	int		j;
@@ -20,11 +20,17 @@ char	*di_precision(t_check *data, char *str, int len, long long int num)
 
 	i = 0;
 	j = 0;
-	if (num == 0)
-		data->negative = 0; //just for compiling!TAKE OUT!
+	if (data->dot == 1)
+		data->zero = 0;
 	if (data->precision > len)
 	{
 		new = ft_strnew(data->precision);
+		if (data->negative == 1 && data->zero == 0
+			&& data->precision < data->width)
+		{
+			new[i++] = '-';
+			data->precision++;
+		}
 		while (i < (data->precision - len))
 			new[i++] = '0';
 		while (i < data->precision)
@@ -35,7 +41,7 @@ char	*di_precision(t_check *data, char *str, int len, long long int num)
 	return (new);
 }
 
-char	*oux_precision(t_check *data, char *str, int len)
+char	*oux_precision(t_check *data, char *str, int len, int form)
 {
 	int		i;
 	int		j;
@@ -45,7 +51,6 @@ char	*oux_precision(t_check *data, char *str, int len)
 	j = 0;
 	if (data->precision > len)
 	{
-		if (data->precision )
 		new = ft_strnew(data->precision);
 		while (i < (data->precision - len))
 			new[i++] = '0';
@@ -54,33 +59,15 @@ char	*oux_precision(t_check *data, char *str, int len)
 	}
 	else
 		new = ft_strdup(str);
-	if (data->format == 'x' && data->hash == 1 && str[0] != '0' && data->period == 1)
+	if (form == 'x' && data->hash == 1 && str[0] != '0' && data->dot == 1)
 		new = ft_strjoin_free("0x", new, 0, 2);
-	else if (data->format == 'X' && data->hash == 1 && str[0] != '0' && data->period == 1)
+	else if (form == 'X' && data->hash == 1 && str[0] != '0' && data->dot == 1)
 		new = ft_strjoin_free("0X", new, 0, 2);
-	else if (data->format == 'o' && data->hash == 1 && str[0] != '0' && new[0] != '0')
+	else if (form == 'o' && data->hash == 1 && str[0] != '0' && new[0] != '0')
 		new = ft_strjoin_free("0", new, 0, 2);
 	return (new);
 }
 
-/*
-char	*double_precision(t_check *data, char *str, int len)
-{
-	char	*new;
-
-	if (data->precision < len)
-	{
-		new = string_precision(data, str, len);
-		if (str[data->precision] > 4)
-		{
-			if (str[data->precision] != 9)
-				new[data->precision - 1] += 1;
-			else
-				new[data->precision - 1] = 0;
-		}
-	}
-}
-*/
 char	*string_precision(t_check *data, char *str, int len)
 {
 	char	*new;
@@ -89,7 +76,7 @@ char	*string_precision(t_check *data, char *str, int len)
 	{
 		new = ft_strdup(str);
 	}
-	else if (data->period == 1)
+	else if (data->dot == 1)
 	{
 		new = ft_strnew(data->precision);
 		new = ft_strncpy(new, str, data->precision);

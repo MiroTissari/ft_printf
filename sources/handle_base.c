@@ -12,37 +12,18 @@
 
 #include "ft_printf.h"
 
-void	handle_pointer(t_check *data, va_list *argp)
-{
-	char	*str;
-	char	*save;
-
-	str = ft_itoa_base((unsigned long)va_arg(*argp, unsigned long), HX);
-	save = oux_precision(data, str, ft_strlen(str));
-	free (str);
-	save = ft_strjoin_free("0x", save, 0, 2);
-	if (data->width > (int)ft_strlen(save))
-		str = hex_parcer(data, save, ft_strlen(save));
-	else
-		str = ft_strdup(save);
-	free (save);
-	if (data->space == 1)
-		str = ft_strjoin_free(" ", str, 0, 2);
-	else if (data->plus == 1)
-		str = ft_strjoin_free("+", str, 0, 2);
-	print_str(data, str);
-	free (str);
-}
-
 void	handle_oct(t_check *data, char *str, unsigned long long int num)
 {
 	char	*save;
 
 	if (num == 0)
 		data->flag_nb = 1;
-	if (data->period == 1)
+	if (data->dot == 1)
 		data->zero = 0;
-	save = oux_precision(data, str, ft_strlen(str));
+	if ((num == 0 && data->dot == 1))
+		save = handle_hex_zero(data);
+	else
+		save = oux_precision(data, str, ft_strlen(str), data->format);
 	free (str);
 	if (data->width > (int)ft_strlen(save))
 		str = parcer(data, save, ft_strlen(save));
@@ -70,7 +51,7 @@ char	*hash_hex(t_check *data, char *str, unsigned long long int num)
 	int	i;
 
 	i = 0;
-	if (data->hash == 1 && data->period == 0 && num > 0)
+	if (data->hash == 1 && data->dot == 0 && num > 0)
 	{
 		while (str[i] == ' ')
 			i++;
@@ -99,7 +80,12 @@ char	*handle_hex_zero(t_check *data)
 	char	*new;
 
 	if (data->precision < 1)
-		new = ft_strdup("");
+	{
+		if (data->format == 'o' && data->hash == 1)
+			new = ft_strdup("0");
+		else
+			new = ft_strdup("");
+	}
 	else
 	{
 		new = ft_strnew(data->precision);
@@ -113,14 +99,14 @@ void	handle_hex(t_check *data, char *str, unsigned long long int num)
 {
 	char	*save;
 
-	if (data->period == 1 || data->minus == 1)
+	if (data->dot == 1 || data->minus == 1)
 		data->zero = 0;
 	if (num == 0)
 		data->hash = 0;
-	if ((num == 0 && data->period == 1))
+	if ((num == 0 && data->dot == 1))
 		save = handle_hex_zero(data);
 	else
-		save = oux_precision(data, str, ft_strlen(str));
+		save = oux_precision(data, str, ft_strlen(str), data->format);
 	free (str);
 	if (data->width >= (int)ft_strlen(save))
 		str = hex_parcer(data, save, ft_strlen(save));

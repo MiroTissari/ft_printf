@@ -510,7 +510,7 @@ int main()
 	printf("PRINTF:\nu int: |%#5o|\n", 1);
 	ft_printf("MY PRINTF:\nu int: |%#5o|\n", 1);
 	printf("PRINTF:\nu int: |%#010o|\n", 1);
-	ft_printf("MY PRINTF:\nu int: |%#010o|\n", 1);
+	ft_printf("MY PRINTF:\nu int: |%#010o|-\n", 1);
 	printf("\n\n\n\n\n\n\n");
 	printf("PRINTF:\nu int: |%#0.3o|\n", 1);
 	ft_printf("MY PRINTF:\nu int: |%#0.3o|\n", 1);
@@ -585,7 +585,7 @@ int main()
 	printf("PRINTF:\nu int: |%#.1llo|\n", h);
 	ft_printf("MY PRINTF:\nu int: |%#.1llo|\n", h);
 	printf("PRINTF:\nu int: |%#5.25llo|\n", h);
-	ft_printf("MY PRINTF:\nu int: |%#5.25llo|\n", h);
+	ft_printf("MY PRINTF:\nu int: |%#5.25llo|----\n", h);
 
 	printf("\n\n\n\n\n\n");
 	printf("PRINTF:\nu int: |%020llx|\n", h);
@@ -825,7 +825,7 @@ int main()
 	printf("PRINTF:\nu int: |%|\n", NULL);
 /*	ft_printf("MY PRINTF:\nu int: |%|\n", NULL);*/
 
-	ft_printf("MY PRINTF:\npointers: |%01d|\n", -1);
+	ft_printf("MY PRINTF:\npointers: |%01d|-----\n", -1);
 	printf("PRINTF:\npointers: |%01d|\n", -1);
 
 	ft_printf("MY PRINTF:\npointers: |%#.2o|\n", 2);

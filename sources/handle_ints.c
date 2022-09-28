@@ -12,43 +12,42 @@
 
 #include "ft_printf.h"
 
-void	handle_uint(t_check *data, char *str, unsigned long long int num)
+char	*int_flag_check(t_check *data, char	*str, int len)
 {
-	int		len;
-	int		i;
-	char	*save;
-
-	if (num == 0)
-		data->flag_nb = 1; //deal with 0!!
-	save = oux_precision(data, str, ft_strlen(str));
-	free (str);
-	len = ft_strlen(save);
-	if (data->width > len)
-		str = parcer(data, save, len);
-	else
-		str = ft_strdup(save);
-	free (save);
-	i = 0;
-	while (str[i] != '\0')
+	if (data->negative == 1 && str[0] == '0' && str[1] && data->precision < len)
+		str[0] = '-';
+	else if (data->negative == 1 && !ft_strchr(str, '-'))
+		str = ft_strjoin_free("-", str, 0, 2);
+	if (data->plus == 1 && data->negative == 0 && data->format != 'u')
 	{
-		print_char(data, str[i++]);
+		if (str[0] == '0' && str[1] && data->precision < len)
+			str[0] = '+';
+		else
+			str = ft_strjoin_free("+", str, 0, 2);
+		data->plus = 0;
 	}
-	free (str);
+	else if (data->space == 1 && data->negative == 0 && data->format != 'u')
+	{
+		str = ft_strjoin_free(" ", str, 0, 2);
+		data->space = 0;
+	}
+	return (str);
 }
 
-void	handle_int_zero(t_check *data, char *str, long long int num)
+void	handle_uint_zero(t_check *data, char *str)
 {
 	char	*save;
 	int		len;
-	int		i;
 
-	if (data->period == 1 && data->precision == 0)
+	if (data->dot == 1 && data->precision == 0)
 	{
 		save = ft_strdup("");
 		data->zero = 0;
 	}
 	else
-		save = ft_strdup("0");
+		save = oux_precision(data, str, ft_strlen(str));
+	if (data->zero == 0)
+		save = int_flag_check(data, save, ft_strlen(save));
 	len = ft_strlen(save);
 	free (str);
 	if (data->width > len)
@@ -56,38 +55,75 @@ void	handle_int_zero(t_check *data, char *str, long long int num)
 	else
 		str = ft_strdup(save);
 	free (save);
-	if (num < 0)
-		str = ft_strjoin_free("-", str, 0, 2);
-	i = 0;
-	while (str[i] != '\0')
-	{
-		print_char(data, str[i++]);
-	}
+	str = int_flag_check(data, str, ft_strlen(str));
+	print_str(data, str);
 	free (str);
 }
 
-void	handle_int(t_check *data, char *str, long long int num)
+void	handle_uint(t_check *data, char *str)
 {
 	int		len;
-	int		i;
 	char	*save;
 
-	if (num == 0)
-		handle_int_zero(data, str, num);
-	save = di_precision(data, str, ft_strlen(str), num);
+	save = oux_precision(data, str, ft_strlen(str));
 	free (str);
+	if (data->zero == 0)
+		save = int_flag_check(data, save, ft_strlen(save));
 	len = ft_strlen(save);
 	if (data->width > len)
 		str = parcer(data, save, len);
 	else
 		str = ft_strdup(save);
 	free (save);
-	if (num < 0)
-		str = ft_strjoin_free("-", str, 0, 2);
-	i = 0;
-	while (str[i] != '\0')
+	str = int_flag_check(data, str, ft_strlen(str));
+	print_str(data, str);
+	free (str);
+}
+
+void	handle_int_zero(t_check *data, char *str)
+{
+	char	*save;
+	int		len;
+
+	if (data->dot == 1 && data->precision == 0)
 	{
-		print_char(data, str[i++]);
+		save = ft_strdup("");
+		data->zero = 0;
 	}
+	else
+		save = di_precision(data, str, ft_strlen(str));
+	if (data->zero == 0)
+		save = int_flag_check(data, save, ft_strlen(save));
+	len = ft_strlen(save);
+	free (str);
+	if (data->width > len)
+		str = parcer(data, save, len);
+	else
+		str = ft_strdup(save);
+	free (save);
+	str = int_flag_check(data, str, ft_strlen(str));
+	print_str(data, str);
+	free (str);
+}
+
+void	handle_int(t_check *data, char *str)
+{
+	int		len;
+	char	*save;
+
+	if (data->dot == 1)
+		data->zero = 0;
+	save = di_precision(data, str, ft_strlen(str));
+	free (str);
+	if (data->zero == 0)
+		save = int_flag_check(data, save, ft_strlen(save));
+	len = ft_strlen(save);
+	if (data->width > len)
+		str = parcer(data, save, len);
+	else
+		str = ft_strdup(save);
+	free (save);
+	str = int_flag_check(data, str, ft_strlen(str));
+	print_str(data, str);
 	free (str);
 }
