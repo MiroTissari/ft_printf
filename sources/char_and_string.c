@@ -55,8 +55,8 @@ char	*deal_null(char *str, t_check *data)
 		exit(1);*/
 	if (str == NULL)
 	{
-		if ((data->precision >= 6 || data->period == 0)
-			|| (data->period == 0 && data->width == 0))
+		if ((data->precision >= 6 || data->dot == 0)
+			|| (data->dot == 0 && data->width == 0))
 			new = ft_strdup("(null)");
 		else
 			new = ft_strdup("");

@@ -45,7 +45,7 @@ void	handle_uint_zero(t_check *data, char *str)
 		data->zero = 0;
 	}
 	else
-		save = oux_precision(data, str, ft_strlen(str));
+		save = oux_precision(data, str, ft_strlen(str), data->format);
 	if (data->zero == 0)
 		save = int_flag_check(data, save, ft_strlen(save));
 	len = ft_strlen(save);
@@ -65,7 +65,7 @@ void	handle_uint(t_check *data, char *str)
 	int		len;
 	char	*save;
 
-	save = oux_precision(data, str, ft_strlen(str));
+	save = oux_precision(data, str, ft_strlen(str), data->format);
 	free (str);
 	if (data->zero == 0)
 		save = int_flag_check(data, save, ft_strlen(save));

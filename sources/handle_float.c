@@ -43,21 +43,6 @@ char	*float_nan_inf(long double num, t_check *data)
 	return (str);
 }
 
-long double	double_power(long double num, int prec)
-{
-	long double	i;
-	int			j;
-
-	j = 0;
-	i = 1.0;
-	while (j < prec)
-	{
-		i *= num;
-		j++;
-	}
-	return (i);
-}
-
 long double	bankers_round(t_check *data, int prec, long double num)
 {
 	long double	round;
