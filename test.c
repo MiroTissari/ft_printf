@@ -5,6 +5,8 @@
 int	main(void)
 {
 	int	i;
+	int	n;
+	int	n1;
 	char	*str;
 	char	c;
 	char	*s;
@@ -26,10 +28,10 @@ int	main(void)
 	ft_printf("my pointer |%+15p|\n", &str);
 	printf("thepointer |% 15p|\n", &str);
 	ft_printf("my pointer |% 15p|\n", &str);
-	printf("thepointer |% +019.16p|\n", &str);
-	ft_printf("my pointer |% +019.16p|\n", &str);
+	printf("thepointer |% +019p|\n", &str);
+	ft_printf("my pointer |% +019p|\n", &str);
 	printf("thepointer |%# .18p|\n", &str);
-	ft_printf("my pointer |% .18p|\n\n", &str);
+	ft_printf("my pointer |%# .18p|\n\n", &str);
 
 	printf("HEX:\n\n");
 	printf("PRINTF:\nu int: |%#-10.1llX|\n", h);
@@ -104,22 +106,50 @@ int	main(void)
 	ft_printf("my_printf: \t|%#.10lf| \t|%Lf|\n", 1.5555555f, 1.5L);
 	printf("theprintf: \t|%10.0lf| \t|%Lf|\n", -1.5f, 1.5L);
 	ft_printf("my_printf: \t|%10.0lf| \t|%Lf|\n", -1.5f, 1.5L);
-	printf("theprintf: \t|%#10.30lf| \t|%.3Lf|\n", 1.999999999999999, 0.0L);
-	ft_printf("my_printf: \t|%#10.30lf| \t|%.3Lf|\n", 1.999999999999999, 0.0L);
-	ft_printf("my_printf: \t|%+.3Lf||%+.3Lf||%+.3Lf||\n", 1.5L, 0.0L, 0.0L);
-	printf("theprintf: \t|%+.3Lf||%+.3Lf||%+.3Lf||\n", 1.5L, 0.0L, 0.0L);
+
+	printf("theprintf: \t|%#10.29lf| \t|%.2Lf|\n", -1.999999999999999, 0.0L);
+	ft_printf("my_printf: \t|%#10.29lf| \t|%.2Lf|\n", -1.999999999999999, 0.0L);
+
+	printf("theprintf: \t|%+.3Lf||%+.3Lf||%+.12Lf||\n", 1.5L, 0.0L, 0.0L);
+	ft_printf("my_printf: \t|%+.3Lf||%+.3Lf||%+.12Lf||\n", 1.5L, 0.0L, 0.0L);
 
 	printf("theprintf: \t|%10.0f| \t|%+.3Lf|\t|%.4f|\n", 4.5, 0.0L, 0.0/0);
 	ft_printf("my_printf: \t|%10.0f| \t|%+.3Lf|\t|%.4f|\n", 4.5, 0.0L, 0.0/0);
 	printf("theprintf: \t|%10.0Llf|\n", 1.5);
 	ft_printf("my_printf: \t|%10.0Llf|\n\n", 1.5);
-	printf("%++++++0000lllhlhlhlhlhlhlhlhd", 22525526262);
+	printf("%+0lld", 22525526262);
 	ft_printf("%++++++0000lllhlhlhlhlhlhlhlhd", 22525526262);
 
+	printf("theprintf: \t|%%%|\n", 1.5);
+	ft_printf("my_printf: \t|%%%|------\n\n", 1.5);
 
+	printf("c with null|%3c|\n", 0);
+	ft_printf("c with null|%3c|\n", 0);
+	printf("{%3c}\n", 0);
+	ft_printf("{%3c}\n", 0);
 
+	printf("{% 03d}\n", 0);
+	ft_printf("{% 03d}\n\n", 0);
 
+	printf("%.0p, %.p\n", 0, 0);
+	ft_printf("%.0p, %.p\n\n", 0, 0);
 
+	printf("|%.c|\n", 0);
+	ft_printf("|%.c|\n\n", 0);
+
+	printf("{%f}{%lf}{%Lf}\n", -1.42, -1.42, -1.42l);
+	ft_printf("{%f}{%lf}{%Lf}\n\n", -1.42, -1.42, -1.42l);
+
+	n = printf("|%|\n");
+	printf("|%i|\n", n);
+	n1 = ft_printf("|%|\n");
+	printf("|%i|\n\n", n1);
+
+	printf("|%#.f| |%#.0f| |%#.15Lf|\n", 0.0, 0.0l, 0.0l);
+	ft_printf("|%#.f| |%#.0f| |%#.15Lf|\n\n", 0.0, 0.0l, 0.0l);
+
+	printf("|%#x|\n", 2147483647);
+	ft_printf("|%#x|\n\n", 2147483647);
 
 
 	system("\nleaks test");

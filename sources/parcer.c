@@ -6,7 +6,7 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:48:30 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/20 17:15:15 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:19:09 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ char	*pointer_parcer(t_check *data, char *str, int len)
 	c = ' ';
 	if (data->zero == 1)
 		c = '0';
-	if (data->zero == 0 && (data->plus == 1 || data->space == 1))
-		pointer_flags(data, str);
+	//if (data->zero == 0 && (data->plus == 1 || data->space == 1))
+	//	pointer_flags(data, str);
 	new = ft_strnew(data->width);
 	new = ft_memset(new, c, data->width);
 	if (data->minus == 0 && data->width > len)

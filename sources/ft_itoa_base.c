@@ -6,7 +6,7 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:48:04 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/15 16:48:06 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/29 20:57:59 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ char	*ft_itoa_base(long long int nb, char *base)
 	int		b;
 	char	*conversion;
 
+	if (nb == -9223372036854775807 - 1)
+		return (conversion = ft_strdup("9223372036854775808"));
 	b = ft_strlen(base);
 	len = ft_intlen(nb, b);
 	conversion = ft_strnew(len);

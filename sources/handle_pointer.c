@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_pointer.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/29 16:42:11 by mtissari          #+#    #+#             */
+/*   Updated: 2022/09/29 19:29:31 by mtissari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/*
 char	*pointer_flags(t_check *data, char *str)
 {
 	if (data->plus == 1)
@@ -21,6 +33,9 @@ char	*pointer_flags(t_check *data, char *str)
 	}
 	return (str);
 }
+	This function is only for linux compiling,
+	because on linux, the pointers follow '+' and ' ' -flags.
+*/
 
 void	handle_pointer(t_check *data, va_list *argp)
 {
@@ -29,9 +44,12 @@ void	handle_pointer(t_check *data, va_list *argp)
 	unsigned long	nb;
 
 	nb = (unsigned long)va_arg(*argp, unsigned long);
-	if (!nb)
-		return (print_str(data, "(null)"));
-	str = uitoa_base(nb, HX);
+	if (data->precision == 0 && data->dot == 1 && nb == 0)
+		str = ft_strdup("");
+	else
+		str = uitoa_base(nb, HX);
+	if (data->dot == 1)
+		data->zero = 0;
 	save = oux_precision(data, str, ft_strlen(str), data->format);
 	free (str);
 	if (data->zero == 0 || data->width <= (int)ft_strlen(save))
@@ -41,12 +59,12 @@ void	handle_pointer(t_check *data, va_list *argp)
 	else
 		str = ft_strdup(save);
 	free (save);
-	if (data->zero == 1 && (data->space == 1 || data->plus == 1))
-		str[2] = 'x';
-	else if (data->zero == 1 && str[1] == '0')
+	//if (data->zero == 1 && (data->space == 1 || data->plus == 1))
+	//	str[2] = 'x';
+	if (data->zero == 1 && str[1] == '0')
 		str[1] = 'x';
-	if (data->space == 1 || data->plus == 1)
-		str = pointer_flags(data, str);
+//	if (data->space == 1 || data->plus == 1)
+//		str = pointer_flags(data, str);
 	print_str(data, str);
 	free (str);
 }

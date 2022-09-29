@@ -6,74 +6,67 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:47:58 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/20 17:10:05 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/29 22:35:44 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	set_modifiers(char *str, int i, t_check *data)
+int	set_modifiers(char *str, int i, t_check *data)
 {
 	if (str[i] == 'l')
 	{
 		if (str[i + 1] == 'l')
-		{
 			data->ll = 1;
-		}
-		data->l = 1;
+		else
+			data->l = 1;
 	}
-	if (str[i] == 'h')
+	else if (str[i] == 'h')
 	{
 		if (str[i + 1] == 'h')
-		{
 			data->hh = 1;
-		}
-		data->h = 1;
+		else
+			data->h = 1;
 	}
-	if (str[i] == 'L')
+	else if (str[i] == 'L')
 		data->cap_l = 1;
+	while (str[i] == 'l' || str[i] == 'h' || str[i] == 'L')
+		i++;
+	return (i);
 }
 
-void	length_check(char *str, int i)
+void	temp_free(t_check *data)
 {
-	int		len;
-
-	len = 0;
-	while (str[i + len] >= 48 && str[i + len] <= 57)
-		len++;
-	if (len > 10)
-	{
-		write(1, "width/precision too big", 24);
-		exit (1);
-	}
+	free (data->temp_width);
+	free (data->temp_prec);
 }
 
 int	set_width_and_precision(char *str, int i, t_check *data)
 {
-	int		j;
-	char	width[11];
-	char	prec[11];
+	int	j;
 
-	length_check(str, i);
 	j = 0;
+	data->temp_width = ft_strnew(100);
+	data->temp_prec = ft_strnew(100);
 	if (data->width == 0 && data->dot == 0)
 	{
 		while (str[i] >= 48 && str[i] <= 57)
-			width[j++] = str[i++];
+			data->temp_width[j++] = str[i++];
 		if (str[i] == '.')
 		{
 			data->dot = 1;
 			i++;
 		}
-		data->width = ft_atoi(width);
+		data->width = ft_atoi(data->temp_width);
 	}
 	if (data->precision == 0 && data->dot == 1)
 	{
 		j = 0;
 		while (str[i] >= 48 && str[i] <= 57)
-			prec[j++] = str[i++];
-		data->precision = ft_atoi(prec);
+			data->temp_prec[j++] = str[i++];
+		data->precision = ft_atoi(data->temp_prec);
 	}
+	temp_free(data);
 	return (i);
 }
 
@@ -96,34 +89,7 @@ void	set_flags(char flag, t_check *data)
 	else if (flag == '#')
 		data->hash = 1;
 }
-/*
-int	verify_flags(char *s, int i)
-{
-	int	num;
 
-	num = 0;
-	while (s[num] != '%' && s[num] != 'a' && s[num] != 'A' && s[num] != 'g'
-		&& s[num] != 'G' && s[num] != 'e' && s[num] != 'E' && s[num] != 'f'
-		&& s[num] != 'F' && s[num] != 'n' && s[num] != 'p' && s[num] != 'c'
-		&& s[num] != 's' && s[num] != 'd' && s[num] != 'i' && s[num] != 'o'
-		&& s[num] != 'u' && s[num] != 'x' && s[num] != 'X')
-	{
-		if (s[num] != ' ' && s[num] != '0' && s[num] != '#' && s[num] != '-'
-			&& s[num] != '+' && s[num] != '.' && s[num] != '*' && s[num] != 'l'
-			&& s[num] != 'h' && s[num] != 'L' && s[num] != 'j' && s[num] != 't'
-			&& s[num] != 'z')
-		{
-			if (s[num] <= 48 && s[num] >= 57)
-			{
-				write(1, "error", 6);
-				exit (0);
-			}
-		}
-		num++;
-	}
-	return (i + num);
-}
-*/
 int	verify_flags(char *s)
 {
 	int	num;
@@ -146,5 +112,5 @@ int	verify_flags(char *s)
 		&& s[num] != 's' && s[num] != 'd' && s[num] != 'i' && s[num] != 'o'
 		&& s[num] != 'u' && s[num] != 'x' && s[num] != 'X')
 		return (num);
-	return (0);
+	return (-1);
 }

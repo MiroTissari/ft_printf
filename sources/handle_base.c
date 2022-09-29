@@ -6,7 +6,7 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:48:11 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/20 16:33:37 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/29 23:06:06 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ void	handle_oct(t_check *data, char *str, unsigned long long int num)
 	free (str);
 }
 
-char	*hash_hex_edge(t_check *data, char *str, unsigned long long int num)
+char	*hash_hex_edge(t_check *data, char *str, unsigned long long int nb)
 {
-	if (data->format == 'x' && num > 0)
+	if (data->format == 'x' && nb > 0)
 		str = ft_strjoin("0x", str);
-	else if (data->format == 'X' && num > 0)
+	else if (data->format == 'X' && nb > 0)
 		str = ft_strjoin("0X", str);
 	data->hash = 0;
 	return (str);
@@ -51,7 +51,7 @@ char	*hash_hex(t_check *data, char *str, unsigned long long int num)
 	int	i;
 
 	i = 0;
-	if (data->hash == 1 && data->dot == 0 && num > 0)
+	if (data->hash == 1 && data->dot == 0 && num > 0 && !ft_strchr(str, 'x'))
 	{
 		while (str[i] == ' ')
 			i++;
@@ -110,7 +110,8 @@ void	handle_hex(t_check *data, char *str, unsigned long long int num)
 	free (str);
 	if (data->width >= (int)ft_strlen(save))
 		str = hex_parcer(data, save, ft_strlen(save));
-	else if (data->hash == 1 && ft_strlen(save) < 3)
+	else if ((data->hash == 1 && ft_strlen(save) < 3) || (data->width == 0
+		&& data->dot == 0 && data->hash == 1))
 		str = hash_hex_edge(data, save, num);
 	else
 		str = ft_strdup(save);

@@ -6,7 +6,7 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 13:55:14 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/20 17:09:45 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/29 23:07:40 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 void	set_values(t_check *data)
 {
+	data->temp_width = NULL;
+	data->temp_prec = NULL;
 	data->flag_nb = 0;
 	data->hash = 0;
 	data->minus = 0;
@@ -34,25 +36,23 @@ void	set_values(t_check *data)
 	data->precision = 0;
 	data->format = 0;
 	data->negative = 0;
+	data->nil = 0;
 }
 
-int	false_output(char *str, t_check *data, int i, int len)
+int	false_output(char *str, t_check *data, int i)
 {
-	while (len >= 0)
-	{
-		data->ret_val += write(1, &str[i++], 1);
-		len--;
-	}
-	return (i - 1);
+	print_char(data, str[i]);
+	return (i);
 }
 
 int	check_flags(char *str, t_check *data, int i, va_list *argp)
 {
 	int	nb;
 
+	set_values(data);
 	nb = verify_flags(&str[i]);
-	if (nb != 0)
-		return (false_output(str, data, i - 1, nb + 1));
+	if (nb != -1)
+		return (false_output(str, data, i));
 	nb = i;
 	while (str[i] == ' ' || str[i] == '0' || str[i] == '#' || str[i] == '-'
 		|| str[i] == '+')
@@ -62,18 +62,15 @@ int	check_flags(char *str, t_check *data, int i, va_list *argp)
 	}
 	if ((str[i] >= 48 && str[i] <= 57) || str[i] == '.')
 		i = set_width_and_precision(str, i, data);
-	while (str[i] == 'l' || str[i] == 'h' || str[i] == 'L')
+	if (str[i] == 'l' || str[i] == 'h' || str[i] == 'L')
 	{
-		set_modifiers(str, i, data);
-		i++;
+		i = set_modifiers(str, i, data);
 	}
-	if (data->l && data->cap_l)
-		return (false_output(str, data, nb - 1, i - nb));
 	format_identifier(&str[i], argp, data);
 	return (i);
 }
 
-void	format_identifier(const char *str, va_list *argp, t_check *data)
+void	format_identifier(char *str, va_list *argp, t_check *data)
 {
 	int	i;
 
@@ -93,9 +90,6 @@ void	format_identifier(const char *str, va_list *argp, t_check *data)
 		modify_float(data, argp);
 	else if (str[i] == 'p')
 		handle_pointer(data, argp);
-/*	else
-		perror("format identifier not found or supported");*/
-	//data->index_add++;
 }
 
 int	ft_printf(const char *str, ...)

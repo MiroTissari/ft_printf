@@ -6,7 +6,7 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:48:25 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/20 17:31:50 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/09/29 20:41:02 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	modify_di(t_check *data, va_list *argp)
 	long long int	num;
 
 	if (data->hh == 1)
-		num = (short int)va_arg(*argp, int);
+		num = (char)va_arg(*argp, int);
 	else if (data->h == 1)
-		num = (signed char)va_arg(*argp, int);
+		num = (short int)va_arg(*argp, int);
 	else if (data->ll == 1)
 		num = va_arg(*argp, long long);
 	else if (data->l == 1)
@@ -54,9 +54,9 @@ void	modify_oux(t_check *data, va_list *argp, char format)
 	unsigned long long int	num;
 
 	if (data->hh == 1)
-		num = (unsigned short)va_arg(*argp, unsigned int);
-	else if (data->h == 1)
 		num = (unsigned char)va_arg(*argp, unsigned int);
+	else if (data->h == 1)
+		num = (unsigned short)va_arg(*argp, unsigned int);
 	else if (data->ll == 1)
 		num = va_arg(*argp, unsigned long long int);
 	else if (data->l == 1)
