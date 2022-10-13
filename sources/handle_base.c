@@ -6,7 +6,7 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:48:11 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/29 23:06:06 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:39:31 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	handle_oct(t_check *data, char *str, unsigned long long int num)
 {
 	char	*save;
 
-	if (num == 0)
-		data->flag_nb = 1;
 	if (data->dot == 1)
 		data->zero = 0;
 	if ((num == 0 && data->dot == 1))

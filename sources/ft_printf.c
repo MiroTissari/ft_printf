@@ -6,7 +6,7 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 13:55:14 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/29 23:07:40 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:08:33 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ int	ft_printf(const char *str, ...)
 			set_values(&data);
 			i = check_flags(save, &data, i + 1, &argp);
 		}
+		else if (save[i] == '%')
+			i++;
 		else
 			data.ret_val += write(1, &save[i], 1);
 		i++;

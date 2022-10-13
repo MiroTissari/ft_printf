@@ -6,7 +6,7 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:47:48 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/29 21:49:02 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:38:46 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,27 @@ void	handle_char(t_check *data, int chr)
 
 	if (data->width == 0 && data->precision == 0)
 		return (print_char(data, chr));
-	//temp = ft_strnew(1);
-	//temp[0] = chr;
-	//if (data->width > 1)
 	str = parcer(data, "", 1);
-	//else
-	//	str = ft_strdup(temp);
-	//free(temp);
 	i = 0;
-	while (str[i] != '\0')
-		data->ret_val += write(1, &str[i++], 1);
-	data->ret_val += write(1, &chr, 1);
+	if (data->minus == 0)
+	{
+		while (str[i] != '\0')
+			data->ret_val += write(1, &str[i++], 1);
+		data->ret_val += write(1, &chr, 1);
+	}
+	else
+	{
+		data->ret_val += write(1, &chr, 1);
+		while (str[i] != '\0' && i < data->width - 1)
+			data->ret_val += write(1, &str[i++], 1);
+	}
 	free (str);
 }
 
-char	*deal_null(char *str, t_check *data)
+char	*deal_null(char *str)
 {
 	char	*new;
 
-	data->flag_nb = 1;
 	if (str == NULL)
 	{
 		new = ft_strdup("(null)");

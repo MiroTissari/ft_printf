@@ -6,7 +6,7 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:47:58 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/29 22:35:44 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:07:17 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	verify_flags(char *s)
 		num++;
 	if (s[num] != '%' && s[num] != 'f' && s[num] != 'p' && s[num] != 'c'
 		&& s[num] != 's' && s[num] != 'd' && s[num] != 'i' && s[num] != 'o'
-		&& s[num] != 'u' && s[num] != 'x' && s[num] != 'X')
+		&& s[num] != 'u' && s[num] != 'x' && s[num] != 'X' )
 		return (num);
 	return (-1);
 }
