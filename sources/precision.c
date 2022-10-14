@@ -6,11 +6,11 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:48:35 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/20 17:15:17 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:31:19 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 char	*di_precision(t_check *data, char *str, int len)
 {
@@ -83,8 +83,6 @@ char	*string_precision(t_check *data, char *str, int len)
 	}
 	else
 		new = ft_strdup(str);
-//	if (data->space == 1)
-//		new = ft_strjoin_free(" ", new, 0, 2);
 	return (new);
 }
 

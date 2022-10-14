@@ -6,11 +6,11 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:47:58 by mtissari          #+#    #+#             */
-/*   Updated: 2022/10/05 15:07:17 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:43:48 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int	set_modifiers(char *str, int i, t_check *data)
 {
@@ -38,7 +38,9 @@ int	set_modifiers(char *str, int i, t_check *data)
 void	temp_free(t_check *data)
 {
 	free (data->temp_width);
+	data->temp_width = NULL;
 	free (data->temp_prec);
+	data->temp_prec = NULL;
 }
 
 int	set_width_and_precision(char *str, int i, t_check *data)

@@ -6,11 +6,11 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:47:48 by mtissari          #+#    #+#             */
-/*   Updated: 2022/10/05 15:38:46 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:40:06 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void	print_char(t_check *data, int chr)
 {
@@ -28,7 +28,6 @@ void	print_str(t_check *data, char *str)
 
 void	handle_char(t_check *data, int chr)
 {
-//	char	*temp;
 	char	*str;
 	int		i;
 
@@ -69,7 +68,7 @@ void	handle_string(t_check *data, char *str)
 	char	*temp;
 	char	*save;
 
-	save = deal_null(str, data);
+	save = deal_null(str);
 	temp = string_precision(data, save, ft_strlen(save));
 	free (save);
 	if (data->width > (int)ft_strlen(temp))

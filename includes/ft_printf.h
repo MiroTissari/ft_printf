@@ -6,7 +6,7 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 13:23:16 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/29 23:06:13 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:42:45 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <stdio.h>
 # include "../libft/libft.h"
 
 # define HX		"0123456789abcdef"
@@ -25,12 +24,10 @@
 typedef struct s_check
 {
 	int			ret_val;
-	int			index_add;
 	int			format;
 	char		*temp_width;
 	char		*temp_prec;
 
-	int			flag_nb;
 	int			hash;
 	int			plus;
 	int			minus;
@@ -66,16 +63,11 @@ void		handle_string(t_check *data, char *str);
 void		handle_char(t_check *data, int chr);
 void		print_char(t_check *data, int chr);
 void		print_str(t_check *data, char *str);
-char		*deal_null(char *str, t_check *data);
+char		*deal_null(char *str);
 
 void		modify_float(t_check *data, va_list *argp);
 void		modify_di(t_check *data, va_list *argp);
 void		modify_oux(t_check *data, va_list *argp, char format);
-
-/*void		handle_numbers(t_check *data, va_list argp, char format);
-char		*modifier_check(t_check *data, va_list argp, char format);
-char		*modifier_ll(t_check *data, va_list argp);
-char		*modifier_hh(t_check *data, va_list argp);*/
 
 void		handle_int(t_check *data, char *str);
 void		handle_uint(t_check *data, char *str);
@@ -94,6 +86,7 @@ char		*pointer_flags(t_check *data, char *str);
 
 void		handle_float(t_check *data, long double num);
 long double	float_round(t_check *data, int prec, long double num);
+long double	bankers_round(int prec, long double num);
 char		*float_nan_inf(long double num, t_check *data);
 char		*float_flag_check(t_check *data, char *str, int len);
 
@@ -105,8 +98,6 @@ char		*ft_itoa_base(long long int nb, char *base);
 
 char		*parcer(t_check *data, char *str, int len);
 char		*hex_parcer(t_check *data, char *str, int len);
-
-char		*rounding_floats(char *str, int len);
 
 char		*string_precision(t_check *data, char *str, int len);
 char		*double_precision(t_check *data, char *str, int len);

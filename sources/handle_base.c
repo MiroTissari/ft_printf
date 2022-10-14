@@ -6,11 +6,11 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:48:11 by mtissari          #+#    #+#             */
-/*   Updated: 2022/10/05 15:39:31 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:38:55 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void	handle_oct(t_check *data, char *str, unsigned long long int num)
 {
@@ -109,7 +109,7 @@ void	handle_hex(t_check *data, char *str, unsigned long long int num)
 	if (data->width >= (int)ft_strlen(save))
 		str = hex_parcer(data, save, ft_strlen(save));
 	else if ((data->hash == 1 && ft_strlen(save) < 3) || (data->width == 0
-		&& data->dot == 0 && data->hash == 1))
+			&& data->dot == 0 && data->hash == 1))
 		str = hash_hex_edge(data, save, num);
 	else
 		str = ft_strdup(save);

@@ -6,26 +6,21 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 13:55:14 by mtissari          #+#    #+#             */
-/*   Updated: 2022/10/05 15:08:33 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:42:51 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-/*sources/ft_printf.c:17:12: error: array type 'char [17]' is not assignable
-		data->hex = "0123456789abcdef";*/
+#include "../includes/ft_printf.h"
 
 void	set_values(t_check *data)
 {
 	data->temp_width = NULL;
 	data->temp_prec = NULL;
-	data->flag_nb = 0;
 	data->hash = 0;
 	data->minus = 0;
 	data->plus = 0;
 	data->space = 0;
 	data->zero = 0;
-	data->index_add = 0;
 	data->dot = 0;
 	data->l = 0;
 	data->ll = 0;

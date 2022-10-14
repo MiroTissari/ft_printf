@@ -6,22 +6,19 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:51:54 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/29 21:46:45 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:31:58 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 char	*get_decimal(long double dec, int precision)
 {
 	int					i;
 	char				*new;
-	//unsigned long long	temp;
 
 	i = 0;
 	new = ft_strnew(precision);
-//	temp = (unsigned long long)(dec * double_power(10, precision));
-//	if ()
 	while (precision--)
 	{
 		dec *= 10;

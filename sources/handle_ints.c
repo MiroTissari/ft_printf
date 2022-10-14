@@ -6,11 +6,11 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:48:22 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/29 19:34:50 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:31:38 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 char	*int_flag_check(t_check *data, char	*str, int len)
 {

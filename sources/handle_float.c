@@ -6,11 +6,11 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:48:16 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/29 21:25:40 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:31:41 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 char	*float_flag_check(t_check *data, char *str, int len)
 {
@@ -75,16 +75,12 @@ long double	bankers_round(int prec, long double num)
 long double	float_round(t_check *data, int prec, long double num)
 {
 	long double	temp;
-	//long double	temp2;
 
 	if (data->negative == 1)
 		num = -num;
 	temp = num * double_power(10, prec);
-	//temp2 = (temp - (long long)temp) * 10;
-	// || (temp2 < 5.0 && temp2 > 4.9)
 	if (temp - (long long)temp == 0.5)
 	{
-		// || temp2 < 5
 		if ((long long)temp % 2 != 1 || data->cap_l == 1)
 			num = temp / double_power(10, prec);
 		else

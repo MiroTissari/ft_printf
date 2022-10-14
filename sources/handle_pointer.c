@@ -6,36 +6,11 @@
 /*   By: mtissari <mtissari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 16:42:11 by mtissari          #+#    #+#             */
-/*   Updated: 2022/09/29 19:29:31 by mtissari         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:31:35 by mtissari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-/*
-char	*pointer_flags(t_check *data, char *str)
-{
-	if (data->plus == 1)
-	{
-		if ((str[0] == '0' || str[0] == ' ') && str[1] != 'x')
-			str[0] = '+';
-		else
-			str = ft_strjoin_free("+", str, 0, 2);
-		data->plus = 0;
-	}
-	else if (data->space == 1 && str[0] != ' ')
-	{
-		if (str[0] == '0' && str[1] != 'x')
-			str[0] = ' ';
-		else
-			str = ft_strjoin_free(" ", str, 0, 2);
-		data->space = 0;
-	}
-	return (str);
-}
-	This function is only for linux compiling,
-	because on linux, the pointers follow '+' and ' ' -flags.
-*/
+#include "../includes/ft_printf.h"
 
 void	handle_pointer(t_check *data, va_list *argp)
 {
@@ -59,12 +34,8 @@ void	handle_pointer(t_check *data, va_list *argp)
 	else
 		str = ft_strdup(save);
 	free (save);
-	//if (data->zero == 1 && (data->space == 1 || data->plus == 1))
-	//	str[2] = 'x';
 	if (data->zero == 1 && str[1] == '0')
 		str[1] = 'x';
-//	if (data->space == 1 || data->plus == 1)
-//		str = pointer_flags(data, str);
 	print_str(data, str);
 	free (str);
 }
